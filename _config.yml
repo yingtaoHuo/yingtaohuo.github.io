@@ -1,9 +1,7 @@
 title: My personal blog - Richard Huo
-email: 591251214@qq.com
+email: 510344837@qq.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  在这里写一些文字，和大家分享NLP方向的前沿动态。
 permalink: ':title/'
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -11,14 +9,14 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # Author settings
 author: Richard Huo # add your name
 author-pic: huo-face.jpg
-about-author: My name is Richard Huo. I’m a stiudent studying at Northwestern Polytechnical University. My profession is ComputerScience. Now I attach importance to speech enhancement. 
+about-author: Time will tell, 热爱生活的当代码农，狼人杀新手玩家。
 
 # Contact links
-email: 591251214@qq.com # Add your Email address
+email: 510344837@qq.com # Add your Email address
 phone: # Add your Phone number
-website: # Add your website, do not add http://
+website: yingtaohuo.github.io # Add your website, do not add http://
 linkedin: # Add your Linkedin handle
-github:  # Add your Github handle
+github: https://github.com/yingtaoHuo # Add your Github handle
 twitter:  # Add your Twitter handle
 facebook: # Add your Facebook handle
 instagram: # Add your Instagram handle
@@ -28,7 +26,9 @@ pinterest: # Add your Pinterest handle
 mailchimp: # Add your MailChimp form identifier.
 
 # Disqus
-discus_identifier: mr-brown # Add your discus identifier
+# discus_identifier: ATao # Add your discus identifier
+layout: default
+comments: true
 
 # Tracker
 analytics: # Google Analytics
