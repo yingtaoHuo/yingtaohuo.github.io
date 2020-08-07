@@ -2,7 +2,7 @@
 layout: post
 title:  NLP_2020 Sentiment Analysis
 date:   2020-08-07 22:42:20 +0300
-description: Some feelings after watching the movie Forever Young(无问东西) # Add post description (optional)
+description: write some words # Add post description (optional)
 img: playground.jpg # Add image post (optional)
 tags: [NLP-Sentiment]
 author: Ricard Huo # Add name author (optional)
