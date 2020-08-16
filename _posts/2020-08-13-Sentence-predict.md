@@ -10,3 +10,13 @@ language models：
 2. n-gram language models
 3. sparsity problems
 4. fixed window neural language model
+
+problems with RNN:
+1. vanishing gradient(GRU LSTM gradient-clipping skip-connections DenseNet),解决这个问题可以理解为，加各种花式梯度传递的路线。
+2. the repeated multiplication by the same weight matrix
+
+problems with greedy decoding: no way to undo decisions
+
+1. 对网络结构定义的先后顺序影响最后的输出，虽然forward是一样的。
+
+[bmm](https://blog.csdn.net/sinat_34328764/article/details/105155644)
