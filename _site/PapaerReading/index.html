@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>ForeverYoung - My personal blog - Richard Huo</title>
-	<meta name="description" content="Some feelings after watching the movie Forever Young(无问东西)">
+	<title>NLP_2020 Sentiment Analysis - My personal blog - Richard Huo</title>
+	<meta name="description" content="write some words">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -51,38 +51,52 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/post-1.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/playground.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">ForeverYoung</h1>
-          <div class="page-date"><time datetime="2018-03-11 18:32:20 +0800">2018, Mar 11</time></div>
+          <h1 class="page-title">NLP_2020 Sentiment Analysis</h1>
+          <div class="page-date"><time datetime="2020-08-08 03:42:20 +0800">2020, Aug 08</time></div>
         </div>
-        <p>If you have known what you will face in advance, will you have enough courage to come again?
-From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.</p>
-
-<blockquote>
-  <font color="#EE2C2C">"爱你所爱，行你所行，听从你心，无问西东"
-</font>
-</blockquote>
-
-<p><img src="/assets/img/film-foreveryoung-1.jpg" alt="Yosh Ginsu" /></p>
+        <ol>
+  <li>本文分析各个文本预处理过程在情感分析任务中的作用。 *
+<em>A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks</em></li>
+  <li>本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。*
+<em>CH-SIMS: A Chinese Multimodal Sentiment Analysis Dataset with Fine-grained Annotations of Modality</em></li>
+  <li>本文提出一种新颖的预处理办法：Sentiment Knowledge Enhanced Pre-training，为了解决目前sentiment words和aspect-sentiment pairs在预处理中被忽视的问题。*
+<em>SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis</em></li>
+  <li>本文提出cross domain的模型，主要为了解决labeled数据不足的问题。*
+<em>Adversarial and Domain-Aware BERT for Cross-Domain Sentiment Analysis</em></li>
+  <li>本文提出了一套无监督，跨语种，情感分类模型，命名为multi-view encoder-classifier(MVEC)，解决部分语种缺少标注数据和大型语料库的问题。
+<em>Cross-Lingual Unsupervised Sentiment Classification with Multi-View Transfer Learning</em></li>
+  <li>关于Aspect sentiment analysis问题，本文提出了过去的研究者们专注于sentence-level sentiment analysis，忽略了document-level的信息，并举出明显案例佐证观点。以下是对于Aspect sentiment analysis的解释。*
+Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).
+<em>Aspect Sentiment Classification with Document-level Sentiment Preference Modeling</em></li>
+  <li>本文提出此前的aspect情感研究存在一个问题：人们通过attention机制，强调opinion word与aspect的关系，但是因为语言间复杂的关系，模型往往会confuse这些关系。本文提出通过构建有效的语法树来解决这一问题。*
+<em>Relational Graph Attention Network for Aspect-based Sentiment Analysis</em></li>
+  <li>本文认为情感分析，情绪分析的结果对于嘲讽检测有正面意义，提出一个多任务框架，使用环境为多模态的场景。这个研究证明，情感检测得到的结果可以提高嘲讽检测模型的效果。
+<em>Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, Sentiment and Emotion Analysis</em></li>
+  <li>本文首先将ABSA问题，拆解为三个子问题的集合，提出三个子问题间的交互关系尚未被挖掘这一事实，于是提出想通过构建aspect与opinion的关系对三个子问题的协作信号进行编码（这句话过于拗口，简单点就是，加了点先验知识，比如‘美味’一般情况下不会对应‘地板’，大概率会对应‘食物’类别下的名词）。*
+<em>Relation-Aware Collaborative Learning for Unified Aspect-Based Sentiment Analysis</em></li>
+  <li>本文尝试拓展bert模型的使用方法，提高类bert模型在SST数据集上，phrase-level sentiment analysis的成绩。通过构建一棵二元树，总结一段phrase的上下文信息，实验证明在phrase-level sentiment classification获得较好效果。后面还有实验可以证明该模型的迁移效果较好。最后设计了可视化方法去展示这一模型的优势。 *
+<em>SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics</em></li>
+  <li>本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 *
+<em>KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis</em></li>
+</ol>
 
         <div class="page-footer">
           <div class="page-tag">
             <span>Tags:</span>
             
-            <a href="/tags#Blog" class="tag">| Blog</a>
-            
-            <a href="/tags#Forever Young" class="tag">| Forever Young</a>
+            <a href="/tags#NLP-Sentiment" class="tag">| NLP-Sentiment</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=ForeverYoung&url=http://localhost:4000/Forever-Young/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Forever-Young/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/Forever-Young/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=NLP_2020 Sentiment Analysis&url=http://localhost:4000/PapaerReading/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/PapaerReading/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/PapaerReading/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>ForeverYoung - My personal blog - Richard Huo</title>
-	<meta name="description" content="Some feelings after watching the movie Forever Young(无问东西)">
+	<title>CS224n-Assignment2 - My personal blog - Richard Huo</title>
+	<meta name="description" content="write some words">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -51,38 +51,44 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/post-1.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/cat_girl.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">ForeverYoung</h1>
-          <div class="page-date"><time datetime="2018-03-11 18:32:20 +0800">2018, Mar 11</time></div>
+          <h1 class="page-title">CS224n-Assignment2</h1>
+          <div class="page-date"><time datetime="2020-08-08 03:42:20 +0800">2020, Aug 08</time></div>
         </div>
-        <p>If you have known what you will face in advance, will you have enough courage to come again?
-From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.</p>
+        <ol>
+  <li>本来最近在完成cs224n的课程，就记录一下自己在完成过程中较易堵住的地方吧。</li>
+  <li>加载glovce预训练模型，因为在墙内，所以比较麻烦，先从我提供的百度云盘中下载glove.6B.zip，解压到同一目录下，<code class="language-plaintext highlighter-rouge">gensim.scripts.glove2word2vec()</code>将其转为word2vec格式的模型，再由<code class="language-plaintext highlighter-rouge">load_word2vec_format()</code>函数进行读取。</li>
+  <li>思考glove模型的bias问题，bias怎么来的，如何解决</li>
+  <li>word2vec的训练迭代过程</li>
+  <li>type创建类与class的区别，<code class="language-plaintext highlighter-rouge">isinstance()</code></li>
+  <li>numpy,dot,broadcast,multiply区别</li>
+  <li>word2vec训练源码：<a href="https://github.com/yingtaoHuo/CS224n-assignment/blob/master/a2/word2vec.py">skip-gram模型</a></li>
+</ol>
 
-<blockquote>
-  <font color="#EE2C2C">"爱你所爱，行你所行，听从你心，无问西东"
-</font>
-</blockquote>
-
-<p><img src="/assets/img/film-foreveryoung-1.jpg" alt="Yosh Ginsu" /></p>
+<p>参考文献</p>
+<ol>
+  <li>https://looperxx.github.io/CS224n-2019-Assignment/</li>
+  <li>http://web.stanford.edu/class/cs224n/</li>
+  <li>http://moverzp.com/2019/05/19/CS-224n-2019-Assignment-2-word2vec-Coding-%E2%80%94%E2%80%94Part-1/</li>
+  <li><a href="https://www.runoob.com/numpy/numpy-broadcast.html">numpy广播机制</a></li>
+</ol>
 
         <div class="page-footer">
           <div class="page-tag">
             <span>Tags:</span>
             
-            <a href="/tags#Blog" class="tag">| Blog</a>
-            
-            <a href="/tags#Forever Young" class="tag">| Forever Young</a>
+            <a href="/tags#NLP-Basic" class="tag">| NLP-Basic</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=ForeverYoung&url=http://localhost:4000/Forever-Young/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Forever-Young/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/Forever-Young/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=CS224n-Assignment2&url=http://localhost:4000/CS224nA2/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/CS224nA2/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/CS224nA2/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">

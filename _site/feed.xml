@@ -1,5 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-07T23:03:47+08:00</updated><id>http://localhost:4000/</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
-</subtitle><author><name>Richard Huo</name></author><entry><title type="html">ForeverYoung</title><link href="http://localhost:4000/Forever-Young/" rel="alternate" type="text/html" title="ForeverYoung" /><published>2018-03-11T18:32:20+08:00</published><updated>2018-03-11T18:32:20+08:00</updated><id>http://localhost:4000/Forever-Young</id><content type="html" xml:base="http://localhost:4000/Forever-Young/">&lt;p&gt;If you have known what you will face in advance, will you have enough courage to come again?
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-16T12:07:15+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
+</subtitle><author><name>Richard Huo</name></author><entry><title type="html">CS224n-Assignment3</title><link href="http://localhost:4000/CS224nA3/" rel="alternate" type="text/html" title="CS224n-Assignment3" /><published>2020-08-13T02:14:20+08:00</published><updated>2020-08-13T02:14:20+08:00</updated><id>http://localhost:4000/CS224nA3</id><content type="html" xml:base="http://localhost:4000/CS224nA3/">&lt;h1 id=&quot;assignment3-write-answer&quot;&gt;assignment3 write Answer&lt;/h1&gt;
+&lt;h2 id=&quot;machine-learning--neural-networks&quot;&gt;Machine Learning &amp;amp; Neural Networks&lt;/h2&gt;
+&lt;h3 id=&quot;a-adam-optimizer&quot;&gt;(a) Adam Optimizer&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。&lt;/li&gt;
+  &lt;li&gt;这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。
+    &lt;h3 id=&quot;b-regularization-technique-dropout&quot;&gt;(b) Regularization technique-Dropout&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;1式带入2式&lt;/li&gt;
+  &lt;li&gt;训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;dependency-parsing&quot;&gt;Dependency Parsing&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://spellonyou.github.io/2020/06/cs224n-19w-a3/&quot;&gt;图&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2*n，进n次，出n次&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/yingtaoHuo/CS224n-assignment/tree/master/a3/student&quot;&gt;见代码&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;参考目录：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://andyljones.tumblr.com/post/110998971763/an-explanation-of-xavier-initialization&quot;&gt;参数初始化&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;https://spellonyou.github.io/2020/06/cs224n-19w-a3/&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">assignment3 write Answer Machine Learning &amp;amp; Neural Networks (a) Adam Optimizer b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。 这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。 (b) Regularization technique-Dropout 1式带入2式 训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。</summary></entry><entry><title type="html">Sentence Predict</title><link href="http://localhost:4000/Sentence-predict/" rel="alternate" type="text/html" title="Sentence Predict" /><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><id>http://localhost:4000/Sentence-predict</id><content type="html" xml:base="http://localhost:4000/Sentence-predict/">&lt;p&gt;模型的trick：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;L1 regularization&lt;/li&gt;
+  &lt;li&gt;Vectorization&lt;/li&gt;
+  &lt;li&gt;activation function&lt;/li&gt;
+  &lt;li&gt;parameter Initialization&lt;/li&gt;
+  &lt;li&gt;optimizer(Adam), lr decreased as you train&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;language models：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;function:predict next word&lt;/li&gt;
+  &lt;li&gt;n-gram language models&lt;/li&gt;
+  &lt;li&gt;sparsity problems&lt;/li&gt;
+  &lt;li&gt;fixed window neural language model&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;problems with RNN:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;vanishing gradient(GRU LSTM gradient-clipping skip-connections DenseNet),解决这个问题可以理解为，加各种花式梯度传递的路线。&lt;/li&gt;
+  &lt;li&gt;the repeated multiplication by the same weight matrix&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;problems with greedy decoding: no way to undo decisions&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;对网络结构定义的先后顺序影响最后的输出，虽然forward是一样的。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/sinat_34328764/article/details/105155644&quot;&gt;bmm&lt;/a&gt;&lt;/p&gt;</content><author><name>Richard Huo</name></author><summary type="html">模型的trick： L1 regularization Vectorization activation function parameter Initialization optimizer(Adam), lr decreased as you train</summary></entry><entry><title type="html">NLP_2020 Sentiment Analysis</title><link href="http://localhost:4000/PapaerReading/" rel="alternate" type="text/html" title="NLP_2020 Sentiment Analysis" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/PapaerReading</id><content type="html" xml:base="http://localhost:4000/PapaerReading/">&lt;ol&gt;
+  &lt;li&gt;本文分析各个文本预处理过程在情感分析任务中的作用。 *
+&lt;em&gt;A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。*
+&lt;em&gt;CH-SIMS: A Chinese Multimodal Sentiment Analysis Dataset with Fine-grained Annotations of Modality&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文提出一种新颖的预处理办法：Sentiment Knowledge Enhanced Pre-training，为了解决目前sentiment words和aspect-sentiment pairs在预处理中被忽视的问题。*
+&lt;em&gt;SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文提出cross domain的模型，主要为了解决labeled数据不足的问题。*
+&lt;em&gt;Adversarial and Domain-Aware BERT for Cross-Domain Sentiment Analysis&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文提出了一套无监督，跨语种，情感分类模型，命名为multi-view encoder-classifier(MVEC)，解决部分语种缺少标注数据和大型语料库的问题。
+&lt;em&gt;Cross-Lingual Unsupervised Sentiment Classification with Multi-View Transfer Learning&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;关于Aspect sentiment analysis问题，本文提出了过去的研究者们专注于sentence-level sentiment analysis，忽略了document-level的信息，并举出明显案例佐证观点。以下是对于Aspect sentiment analysis的解释。*
+Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).
+&lt;em&gt;Aspect Sentiment Classification with Document-level Sentiment Preference Modeling&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文提出此前的aspect情感研究存在一个问题：人们通过attention机制，强调opinion word与aspect的关系，但是因为语言间复杂的关系，模型往往会confuse这些关系。本文提出通过构建有效的语法树来解决这一问题。*
+&lt;em&gt;Relational Graph Attention Network for Aspect-based Sentiment Analysis&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文认为情感分析，情绪分析的结果对于嘲讽检测有正面意义，提出一个多任务框架，使用环境为多模态的场景。这个研究证明，情感检测得到的结果可以提高嘲讽检测模型的效果。
+&lt;em&gt;Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, Sentiment and Emotion Analysis&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文首先将ABSA问题，拆解为三个子问题的集合，提出三个子问题间的交互关系尚未被挖掘这一事实，于是提出想通过构建aspect与opinion的关系对三个子问题的协作信号进行编码（这句话过于拗口，简单点就是，加了点先验知识，比如‘美味’一般情况下不会对应‘地板’，大概率会对应‘食物’类别下的名词）。*
+&lt;em&gt;Relation-Aware Collaborative Learning for Unified Aspect-Based Sentiment Analysis&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文尝试拓展bert模型的使用方法，提高类bert模型在SST数据集上，phrase-level sentiment analysis的成绩。通过构建一棵二元树，总结一段phrase的上下文信息，实验证明在phrase-level sentiment classification获得较好效果。后面还有实验可以证明该模型的迁移效果较好。最后设计了可视化方法去展示这一模型的优势。 *
+&lt;em&gt;SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 *
+&lt;em&gt;KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Sentiment" /><summary type="html">本文分析各个文本预处理过程在情感分析任务中的作用。 * A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks 本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。* CH-SIMS: A Chinese Multimodal Sentiment Analysis Dataset with Fine-grained Annotations of Modality 本文提出一种新颖的预处理办法：Sentiment Knowledge Enhanced Pre-training，为了解决目前sentiment words和aspect-sentiment pairs在预处理中被忽视的问题。* SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis 本文提出cross domain的模型，主要为了解决labeled数据不足的问题。* Adversarial and Domain-Aware BERT for Cross-Domain Sentiment Analysis 本文提出了一套无监督，跨语种，情感分类模型，命名为multi-view encoder-classifier(MVEC)，解决部分语种缺少标注数据和大型语料库的问题。 Cross-Lingual Unsupervised Sentiment Classification with Multi-View Transfer Learning 关于Aspect sentiment analysis问题，本文提出了过去的研究者们专注于sentence-level sentiment analysis，忽略了document-level的信息，并举出明显案例佐证观点。以下是对于Aspect sentiment analysis的解释。* Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral). Aspect Sentiment Classification with Document-level Sentiment Preference Modeling 本文提出此前的aspect情感研究存在一个问题：人们通过attention机制，强调opinion word与aspect的关系，但是因为语言间复杂的关系，模型往往会confuse这些关系。本文提出通过构建有效的语法树来解决这一问题。* Relational Graph Attention Network for Aspect-based Sentiment Analysis 本文认为情感分析，情绪分析的结果对于嘲讽检测有正面意义，提出一个多任务框架，使用环境为多模态的场景。这个研究证明，情感检测得到的结果可以提高嘲讽检测模型的效果。 Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, Sentiment and Emotion Analysis 本文首先将ABSA问题，拆解为三个子问题的集合，提出三个子问题间的交互关系尚未被挖掘这一事实，于是提出想通过构建aspect与opinion的关系对三个子问题的协作信号进行编码（这句话过于拗口，简单点就是，加了点先验知识，比如‘美味’一般情况下不会对应‘地板’，大概率会对应‘食物’类别下的名词）。* Relation-Aware Collaborative Learning for Unified Aspect-Based Sentiment Analysis 本文尝试拓展bert模型的使用方法，提高类bert模型在SST数据集上，phrase-level sentiment analysis的成绩。通过构建一棵二元树，总结一段phrase的上下文信息，实验证明在phrase-level sentiment classification获得较好效果。后面还有实验可以证明该模型的迁移效果较好。最后设计了可视化方法去展示这一模型的优势。 * SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics 本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 * KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis</summary></entry><entry><title type="html">CS224n-Assignment2</title><link href="http://localhost:4000/CS224nA2/" rel="alternate" type="text/html" title="CS224n-Assignment2" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/CS224nA2</id><content type="html" xml:base="http://localhost:4000/CS224nA2/">&lt;ol&gt;
+  &lt;li&gt;本来最近在完成cs224n的课程，就记录一下自己在完成过程中较易堵住的地方吧。&lt;/li&gt;
+  &lt;li&gt;加载glovce预训练模型，因为在墙内，所以比较麻烦，先从我提供的百度云盘中下载glove.6B.zip，解压到同一目录下，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gensim.scripts.glove2word2vec()&lt;/code&gt;将其转为word2vec格式的模型，再由&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;load_word2vec_format()&lt;/code&gt;函数进行读取。&lt;/li&gt;
+  &lt;li&gt;思考glove模型的bias问题，bias怎么来的，如何解决&lt;/li&gt;
+  &lt;li&gt;word2vec的训练迭代过程&lt;/li&gt;
+  &lt;li&gt;type创建类与class的区别，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isinstance()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;numpy,dot,broadcast,multiply区别&lt;/li&gt;
+  &lt;li&gt;word2vec训练源码：&lt;a href=&quot;https://github.com/yingtaoHuo/CS224n-assignment/blob/master/a2/word2vec.py&quot;&gt;skip-gram模型&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;参考文献&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;https://looperxx.github.io/CS224n-2019-Assignment/&lt;/li&gt;
+  &lt;li&gt;http://web.stanford.edu/class/cs224n/&lt;/li&gt;
+  &lt;li&gt;http://moverzp.com/2019/05/19/CS-224n-2019-Assignment-2-word2vec-Coding-%E2%80%94%E2%80%94Part-1/&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.runoob.com/numpy/numpy-broadcast.html&quot;&gt;numpy广播机制&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">本来最近在完成cs224n的课程，就记录一下自己在完成过程中较易堵住的地方吧。 加载glovce预训练模型，因为在墙内，所以比较麻烦，先从我提供的百度云盘中下载glove.6B.zip，解压到同一目录下，gensim.scripts.glove2word2vec()将其转为word2vec格式的模型，再由load_word2vec_format()函数进行读取。 思考glove模型的bias问题，bias怎么来的，如何解决 word2vec的训练迭代过程 type创建类与class的区别，isinstance() numpy,dot,broadcast,multiply区别 word2vec训练源码：skip-gram模型</summary></entry><entry><title type="html">ForeverYoung</title><link href="http://localhost:4000/Forever-Young/" rel="alternate" type="text/html" title="ForeverYoung" /><published>2018-03-11T18:32:20+08:00</published><updated>2018-03-11T18:32:20+08:00</updated><id>http://localhost:4000/Forever-Young</id><content type="html" xml:base="http://localhost:4000/Forever-Young/">&lt;p&gt;If you have known what you will face in advance, will you have enough courage to come again?
 From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.&lt;/p&gt;
 
 &lt;blockquote&gt;

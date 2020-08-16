@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>ForeverYoung - My personal blog - Richard Huo</title>
-	<meta name="description" content="Some feelings after watching the movie Forever Young(无问东西)">
+	<title>CS224n-Assignment3 - My personal blog - Richard Huo</title>
+	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:image" content="">
@@ -51,38 +51,51 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/post-1.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/all_covered_snow.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">ForeverYoung</h1>
-          <div class="page-date"><time datetime="2018-03-11 18:32:20 +0800">2018, Mar 11</time></div>
+          <h1 class="page-title">CS224n-Assignment3</h1>
+          <div class="page-date"><time datetime="2020-08-13 02:14:20 +0800">2020, Aug 13</time></div>
         </div>
-        <p>If you have known what you will face in advance, will you have enough courage to come again?
-From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.</p>
+        <h1 id="assignment3-write-answer">assignment3 write Answer</h1>
+<h2 id="machine-learning--neural-networks">Machine Learning &amp; Neural Networks</h2>
+<h3 id="a-adam-optimizer">(a) Adam Optimizer</h3>
+<ol>
+  <li>b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。</li>
+  <li>这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。
+    <h3 id="b-regularization-technique-dropout">(b) Regularization technique-Dropout</h3>
+  </li>
+  <li>1式带入2式</li>
+  <li>训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。</li>
+</ol>
 
-<blockquote>
-  <font color="#EE2C2C">"爱你所爱，行你所行，听从你心，无问西东"
-</font>
-</blockquote>
+<h2 id="dependency-parsing">Dependency Parsing</h2>
+<ol>
+  <li><a href="https://spellonyou.github.io/2020/06/cs224n-19w-a3/">图</a></li>
+  <li>2*n，进n次，出n次</li>
+  <li><a href="https://github.com/yingtaoHuo/CS224n-assignment/tree/master/a3/student">见代码</a></li>
+</ol>
 
-<p><img src="/assets/img/film-foreveryoung-1.jpg" alt="Yosh Ginsu" /></p>
+<p>参考目录：</p>
+<ol>
+  <li><a href="https://andyljones.tumblr.com/post/110998971763/an-explanation-of-xavier-initialization">参数初始化</a></li>
+  <li>https://spellonyou.github.io/2020/06/cs224n-19w-a3/</li>
+</ol>
 
         <div class="page-footer">
           <div class="page-tag">
             <span>Tags:</span>
             
-            <a href="/tags#Blog" class="tag">| Blog</a>
-            
-            <a href="/tags#Forever Young" class="tag">| Forever Young</a>
+            <a href="/tags#NLP-Basic" class="tag">| NLP-Basic</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=ForeverYoung&url=http://localhost:4000/Forever-Young/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Forever-Young/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/Forever-Young/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=CS224n-Assignment3&url=http://localhost:4000/CS224nA3/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/CS224nA3/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/CS224nA3/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">

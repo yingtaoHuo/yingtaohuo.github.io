@@ -1,0 +1,30 @@
+<p>模型的trick：</p>
+<ol>
+  <li>L1 regularization</li>
+  <li>Vectorization</li>
+  <li>activation function</li>
+  <li>parameter Initialization</li>
+  <li>optimizer(Adam), lr decreased as you train</li>
+</ol>
+
+<p>language models：</p>
+<ol>
+  <li>function:predict next word</li>
+  <li>n-gram language models</li>
+  <li>sparsity problems</li>
+  <li>fixed window neural language model</li>
+</ol>
+
+<p>problems with RNN:</p>
+<ol>
+  <li>vanishing gradient(GRU LSTM gradient-clipping skip-connections DenseNet),解决这个问题可以理解为，加各种花式梯度传递的路线。</li>
+  <li>the repeated multiplication by the same weight matrix</li>
+</ol>
+
+<p>problems with greedy decoding: no way to undo decisions</p>
+
+<ol>
+  <li>对网络结构定义的先后顺序影响最后的输出，虽然forward是一样的。</li>
+</ol>
+
+<p><a href="https://blog.csdn.net/sinat_34328764/article/details/105155644">bmm</a></p>
