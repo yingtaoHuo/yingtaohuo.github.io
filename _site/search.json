@@ -1,19 +1,19 @@
 [
   
     {
+      "title"    : "CS224n-Assignment4",
+      "category" : "",
+      "tags"     : "NLP-Basic",
+      "url"      : "/CS224nA4/",
+      "date"     : "2020-08-16 16:04:11 +0800"
+    } ,
+  
+    {
       "title"    : "CS224n-Assignment3",
       "category" : "",
       "tags"     : "NLP-Basic",
       "url"      : "/CS224nA3/",
       "date"     : "2020-08-13 02:14:20 +0800"
-    } ,
-  
-    {
-      "title"    : "Sentence Predict",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/Sentence-predict/",
-      "date"     : "2020-08-13 00:00:00 +0800"
     } ,
   
     {

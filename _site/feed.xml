@@ -1,5 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-16T12:07:15+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
-</subtitle><author><name>Richard Huo</name></author><entry><title type="html">CS224n-Assignment3</title><link href="http://localhost:4000/CS224nA3/" rel="alternate" type="text/html" title="CS224n-Assignment3" /><published>2020-08-13T02:14:20+08:00</published><updated>2020-08-13T02:14:20+08:00</updated><id>http://localhost:4000/CS224nA3</id><content type="html" xml:base="http://localhost:4000/CS224nA3/">&lt;h1 id=&quot;assignment3-write-answer&quot;&gt;assignment3 write Answer&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-17T15:07:30+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
+</subtitle><author><name>Richard Huo</name></author><entry><title type="html">CS224n-Assignment4</title><link href="http://localhost:4000/CS224nA4/" rel="alternate" type="text/html" title="CS224n-Assignment4" /><published>2020-08-16T16:04:11+08:00</published><updated>2020-08-16T16:04:11+08:00</updated><id>http://localhost:4000/CS224nA4</id><content type="html" xml:base="http://localhost:4000/CS224nA4/">&lt;h2 id=&quot;奇怪的问题&quot;&gt;奇怪的问题&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;python&amp;lt;3.7的话，会遇到一个奇怪的符号导致后面的注释出现问题，把这个-&amp;gt;删了就行，它的功能类似于argparse。&lt;/li&gt;
+  &lt;li&gt;LSTM的输入进行了打包处理，操作不当会遇到奇怪的错误，一定要仔细看注释的说明。&lt;/li&gt;
+  &lt;li&gt;decode层在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init()&lt;/code&gt;中的定义位置不当，会导致sanity测试出错&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python sanity_check.py 1f&lt;/code&gt;，虽然forward层是一样的。&lt;/li&gt;
+  &lt;li&gt;如果想download代码进行测试，记得下载nltk数据库，这边需要一些微操把数据放在该放的地方。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;nmt&quot;&gt;NMT&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/yingtaoHuo/CS224n-assignment/tree/master/a4&quot;&gt;(a)-&amp;gt;(f)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;(g)attention经过mask后， (src_len,max_len)之间的0变为-inf， 因为后面有softmax，exp(-无穷)=0，解决exp(0)=1在softmax层占比过大的问题。&lt;/li&gt;
+  &lt;li&gt;(j)对于三个attention现在并不是很懂，以后再来填坑，code里用multiplicative attention而不是dot product attention,我一直以为是因为s，h维度不匹配，通过w改变h的维度以便进行bmm操作。以目前所知，dot product attention优势在于计算简单，缺点在于query的size要和h_enc的size必须匹配。additive attention的优势在于可训练f(h_enc,query)可以更好地表达两者间的关系(intution), 缺点在于参数过多(奥卡姆剃刀发出警告)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;analyzing-nmt-systems&quot;&gt;Analyzing NMT Systems&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;不会西班牙语，等以后有机会再填坑。&lt;/li&gt;
+  &lt;li&gt;不想浪费计算资源整这些有的没的，毕竟前人已经证明这套方法的行之有效。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;模型的训练使用&quot;&gt;模型的训练，使用&lt;/h2&gt;
+&lt;h3 id=&quot;模型训练&quot;&gt;模型训练&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;batch_iter里的一个小知识点：yield&lt;/li&gt;
+  &lt;li&gt;source，target中的句子添加pad，确保文本对齐&lt;/li&gt;
+  &lt;li&gt;定义nn.Embeddings时注意padding_idx的设置&lt;/li&gt;
+  &lt;li&gt;BiLSTM对输入语句进行整体编码，获得dec_init（h_projection(h_o)，c_projection(c_o)），h_enc&lt;/li&gt;
+  &lt;li&gt;生成enc_masks,具体目的是标记每个句子结束的部分，计算attention时不会考虑到后面无意义部分，参见NMT_3&lt;/li&gt;
+  &lt;li&gt;decode部分，就是把与encode输入句子parallel的句子，逐词输入，每个词各种计算得到一个向量(1*h, 因为一个batch一起训练，所以输出是b/**h)，最后再append，stack到一起&lt;/li&gt;
+  &lt;li&gt;对于每个词，由(1,h)-&amp;gt;(1,tgt_len)（经由target_vocab_projection），P大小为(b*tgt_len)&lt;/li&gt;
+  &lt;li&gt;这里的gather函数，类似于一个挑选的意思，这个需要理解一下。gather((tgt_len,b,h),(tgt_len,b,1),dim=-1),返回的是(tgt_len,b,1),这个操作的目的时，从hidden输出中挑选出有意义的那一位（根据单词的one-hot向量）&lt;/li&gt;
+  &lt;li&gt;再根据mask去掉end后面的数值，求和，返回这个batch的总分数
+    &lt;h3 id=&quot;使用过程&quot;&gt;使用过程&lt;/h3&gt;
+    &lt;p&gt;&lt;a href=&quot;http://web.stanford.edu/class/cs224n/assignments/a4.pdf&quot;&gt;2.b&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">奇怪的问题 python&amp;lt;3.7的话，会遇到一个奇怪的符号导致后面的注释出现问题，把这个-&amp;gt;删了就行，它的功能类似于argparse。 LSTM的输入进行了打包处理，操作不当会遇到奇怪的错误，一定要仔细看注释的说明。 decode层在init()中的定义位置不当，会导致sanity测试出错python sanity_check.py 1f，虽然forward层是一样的。 如果想download代码进行测试，记得下载nltk数据库，这边需要一些微操把数据放在该放的地方。</summary></entry><entry><title type="html">CS224n-Assignment3</title><link href="http://localhost:4000/CS224nA3/" rel="alternate" type="text/html" title="CS224n-Assignment3" /><published>2020-08-13T02:14:20+08:00</published><updated>2020-08-13T02:14:20+08:00</updated><id>http://localhost:4000/CS224nA3</id><content type="html" xml:base="http://localhost:4000/CS224nA3/">&lt;h1 id=&quot;assignment3-write-answer&quot;&gt;assignment3 write Answer&lt;/h1&gt;
 &lt;h2 id=&quot;machine-learning--neural-networks&quot;&gt;Machine Learning &amp;amp; Neural Networks&lt;/h2&gt;
 &lt;h3 id=&quot;a-adam-optimizer&quot;&gt;(a) Adam Optimizer&lt;/h3&gt;
 &lt;ol&gt;
@@ -22,36 +58,7 @@
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://andyljones.tumblr.com/post/110998971763/an-explanation-of-xavier-initialization&quot;&gt;参数初始化&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;https://spellonyou.github.io/2020/06/cs224n-19w-a3/&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">assignment3 write Answer Machine Learning &amp;amp; Neural Networks (a) Adam Optimizer b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。 这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。 (b) Regularization technique-Dropout 1式带入2式 训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。</summary></entry><entry><title type="html">Sentence Predict</title><link href="http://localhost:4000/Sentence-predict/" rel="alternate" type="text/html" title="Sentence Predict" /><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><id>http://localhost:4000/Sentence-predict</id><content type="html" xml:base="http://localhost:4000/Sentence-predict/">&lt;p&gt;模型的trick：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;L1 regularization&lt;/li&gt;
-  &lt;li&gt;Vectorization&lt;/li&gt;
-  &lt;li&gt;activation function&lt;/li&gt;
-  &lt;li&gt;parameter Initialization&lt;/li&gt;
-  &lt;li&gt;optimizer(Adam), lr decreased as you train&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;language models：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;function:predict next word&lt;/li&gt;
-  &lt;li&gt;n-gram language models&lt;/li&gt;
-  &lt;li&gt;sparsity problems&lt;/li&gt;
-  &lt;li&gt;fixed window neural language model&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;problems with RNN:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;vanishing gradient(GRU LSTM gradient-clipping skip-connections DenseNet),解决这个问题可以理解为，加各种花式梯度传递的路线。&lt;/li&gt;
-  &lt;li&gt;the repeated multiplication by the same weight matrix&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;problems with greedy decoding: no way to undo decisions&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;对网络结构定义的先后顺序影响最后的输出，虽然forward是一样的。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/sinat_34328764/article/details/105155644&quot;&gt;bmm&lt;/a&gt;&lt;/p&gt;</content><author><name>Richard Huo</name></author><summary type="html">模型的trick： L1 regularization Vectorization activation function parameter Initialization optimizer(Adam), lr decreased as you train</summary></entry><entry><title type="html">NLP_2020 Sentiment Analysis</title><link href="http://localhost:4000/PapaerReading/" rel="alternate" type="text/html" title="NLP_2020 Sentiment Analysis" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/PapaerReading</id><content type="html" xml:base="http://localhost:4000/PapaerReading/">&lt;ol&gt;
+&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">assignment3 write Answer Machine Learning &amp;amp; Neural Networks (a) Adam Optimizer b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。 这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。 (b) Regularization technique-Dropout 1式带入2式 训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。</summary></entry><entry><title type="html">NLP_2020 Sentiment Analysis</title><link href="http://localhost:4000/PapaerReading/" rel="alternate" type="text/html" title="NLP_2020 Sentiment Analysis" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/PapaerReading</id><content type="html" xml:base="http://localhost:4000/PapaerReading/">&lt;ol&gt;
   &lt;li&gt;本文分析各个文本预处理过程在情感分析任务中的作用。 *
 &lt;em&gt;A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks&lt;/em&gt;&lt;/li&gt;
   &lt;li&gt;本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。*

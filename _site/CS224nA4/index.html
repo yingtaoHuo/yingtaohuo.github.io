@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>NLP_2020 Sentiment Analysis - My personal blog - Richard Huo</title>
+	<title>CS224n-Assignment4 - My personal blog - Richard Huo</title>
 	<meta name="description" content="write some words">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -51,52 +51,64 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/playground.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/snow_village.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">NLP_2020 Sentiment Analysis</h1>
-          <div class="page-date"><time datetime="2020-08-08 03:42:20 +0800">2020, Aug 08</time></div>
+          <h1 class="page-title">CS224n-Assignment4</h1>
+          <div class="page-date"><time datetime="2020-08-16 16:04:11 +0800">2020, Aug 16</time></div>
         </div>
-        <ol>
-  <li>本文分析各个文本预处理过程在情感分析任务中的作用。 *
-<em>A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks</em></li>
-  <li>本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。*
-<em>CH-SIMS: A Chinese Multimodal Sentiment Analysis Dataset with Fine-grained Annotations of Modality</em></li>
-  <li>本文提出一种新颖的预处理办法：Sentiment Knowledge Enhanced Pre-training，为了解决目前sentiment words和aspect-sentiment pairs在预处理中被忽视的问题。*
-<em>SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis</em></li>
-  <li>本文提出cross domain的模型，主要为了解决labeled数据不足的问题。*
-<em>Adversarial and Domain-Aware BERT for Cross-Domain Sentiment Analysis</em></li>
-  <li>本文提出了一套无监督，跨语种，情感分类模型，命名为multi-view encoder-classifier(MVEC)，解决部分语种缺少标注数据和大型语料库的问题。
-<em>Cross-Lingual Unsupervised Sentiment Classification with Multi-View Transfer Learning</em></li>
-  <li>关于Aspect sentiment analysis问题，本文提出了过去的研究者们专注于sentence-level sentiment analysis，忽略了document-level的信息，并举出明显案例佐证观点。以下是对于Aspect sentiment analysis的解释。*
-Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).
-<em>Aspect Sentiment Classification with Document-level Sentiment Preference Modeling</em></li>
-  <li>本文提出此前的aspect情感研究存在一个问题：人们通过attention机制，强调opinion word与aspect的关系，但是因为语言间复杂的关系，模型往往会confuse这些关系。本文提出通过构建有效的语法树来解决这一问题。*
-<em>Relational Graph Attention Network for Aspect-based Sentiment Analysis</em></li>
-  <li>本文认为情感分析，情绪分析的结果对于嘲讽检测有正面意义，提出一个多任务框架，使用环境为多模态的场景。这个研究证明，情感检测得到的结果可以提高嘲讽检测模型的效果。
-<em>Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, Sentiment and Emotion Analysis</em></li>
-  <li>本文首先将ABSA问题，拆解为三个子问题的集合，提出三个子问题间的交互关系尚未被挖掘这一事实，于是提出想通过构建aspect与opinion的关系对三个子问题的协作信号进行编码（这句话过于拗口，简单点就是，加了点先验知识，比如‘美味’一般情况下不会对应‘地板’，大概率会对应‘食物’类别下的名词）。*
-<em>Relation-Aware Collaborative Learning for Unified Aspect-Based Sentiment Analysis</em></li>
-  <li>本文尝试拓展bert模型的使用方法，提高类bert模型在SST数据集上，phrase-level sentiment analysis的成绩。通过构建一棵二元树，总结一段phrase的上下文信息，实验证明在phrase-level sentiment classification获得较好效果。后面还有实验可以证明该模型的迁移效果较好。最后设计了可视化方法去展示这一模型的优势。 *
-<em>SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics</em></li>
-  <li>本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 *
-<em>KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis</em></li>
+        <h2 id="奇怪的问题">奇怪的问题</h2>
+<ol>
+  <li>python&lt;3.7的话，会遇到一个奇怪的符号导致后面的注释出现问题，把这个-&gt;删了就行，它的功能类似于argparse。</li>
+  <li>LSTM的输入进行了打包处理，操作不当会遇到奇怪的错误，一定要仔细看注释的说明。</li>
+  <li>decode层在<code class="language-plaintext highlighter-rouge">init()</code>中的定义位置不当，会导致sanity测试出错<code class="language-plaintext highlighter-rouge">python sanity_check.py 1f</code>，虽然forward层是一样的。</li>
+  <li>如果想download代码进行测试，记得下载nltk数据库，这边需要一些微操把数据放在该放的地方。</li>
+</ol>
+
+<h2 id="nmt">NMT</h2>
+<ol>
+  <li><a href="https://github.com/yingtaoHuo/CS224n-assignment/tree/master/a4">(a)-&gt;(f)</a></li>
+  <li>(g)attention经过mask后， (src_len,max_len)之间的0变为-inf， 因为后面有softmax，exp(-无穷)=0，解决exp(0)=1在softmax层占比过大的问题。</li>
+  <li>(j)对于三个attention现在并不是很懂，以后再来填坑，code里用multiplicative attention而不是dot product attention,我一直以为是因为s，h维度不匹配，通过w改变h的维度以便进行bmm操作。以目前所知，dot product attention优势在于计算简单，缺点在于query的size要和h_enc的size必须匹配。additive attention的优势在于可训练f(h_enc,query)可以更好地表达两者间的关系(intution), 缺点在于参数过多(奥卡姆剃刀发出警告)</li>
+</ol>
+
+<h2 id="analyzing-nmt-systems">Analyzing NMT Systems</h2>
+<ol>
+  <li>不会西班牙语，等以后有机会再填坑。</li>
+  <li>不想浪费计算资源整这些有的没的，毕竟前人已经证明这套方法的行之有效。</li>
+</ol>
+
+<h2 id="模型的训练使用">模型的训练，使用</h2>
+<h3 id="模型训练">模型训练</h3>
+<ol>
+  <li>batch_iter里的一个小知识点：yield</li>
+  <li>source，target中的句子添加pad，确保文本对齐</li>
+  <li>定义nn.Embeddings时注意padding_idx的设置</li>
+  <li>BiLSTM对输入语句进行整体编码，获得dec_init（h_projection(h_o)，c_projection(c_o)），h_enc</li>
+  <li>生成enc_masks,具体目的是标记每个句子结束的部分，计算attention时不会考虑到后面无意义部分，参见NMT_3</li>
+  <li>decode部分，就是把与encode输入句子parallel的句子，逐词输入，每个词各种计算得到一个向量(1*h, 因为一个batch一起训练，所以输出是b/**h)，最后再append，stack到一起</li>
+  <li>对于每个词，由(1,h)-&gt;(1,tgt_len)（经由target_vocab_projection），P大小为(b*tgt_len)</li>
+  <li>这里的gather函数，类似于一个挑选的意思，这个需要理解一下。gather((tgt_len,b,h),(tgt_len,b,1),dim=-1),返回的是(tgt_len,b,1),这个操作的目的时，从hidden输出中挑选出有意义的那一位（根据单词的one-hot向量）</li>
+  <li>再根据mask去掉end后面的数值，求和，返回这个batch的总分数
+    <h3 id="使用过程">使用过程</h3>
+    <p><a href="http://web.stanford.edu/class/cs224n/assignments/a4.pdf">2.b</a></p>
+  </li>
 </ol>
 
         <div class="page-footer">
           <div class="page-tag">
             <span>Tags:</span>
             
-            <a href="/tags#NLP-Sentiment" class="tag">| NLP-Sentiment</a>
+            <a href="/tags#NLP-Basic" class="tag">| NLP-Basic</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=NLP_2020 Sentiment Analysis&url=http://localhost:4000/PapaerReading/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/PapaerReading/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/PapaerReading/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=CS224n-Assignment4&url=http://localhost:4000/CS224nA4/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/CS224nA4/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/CS224nA4/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">
