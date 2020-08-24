@@ -1,0 +1,3 @@
+1. word2vec训练方法，加速方法，glove，SVD
+2. lstm，RNN，GRU，attention
+3. CNN，

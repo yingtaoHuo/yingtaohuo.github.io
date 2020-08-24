@@ -20,3 +20,5 @@ problems with greedy decoding: no way to undo decisions
 1. 对网络结构定义的先后顺序影响最后的输出，虽然forward是一样的。
 
 [bmm](https://blog.csdn.net/sinat_34328764/article/details/105155644)
+
+

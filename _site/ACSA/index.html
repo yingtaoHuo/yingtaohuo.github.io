@@ -1,0 +1,33 @@
+<ol>
+  <li>Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).</li>
+  <li>Example:Great food but the service was dreadful.
+So delicious was the noodles but terrible vegetables.</li>
+  <li>syntax information, task-related syntatic structures is the key.</li>
+</ol>
+
+<p>Aspect-Oriented Dependency Tree</p>
+<ol>
+  <li>For input sentences, apply a dependency parser to obtain its dependency tree, rij is the relation from node i to node j.</li>
+  <li>place the target aspect at the root</li>
+  <li>set the nodes with direct connections to the aspect as the children.</li>
+  <li>other relations are retained, instead introduce a virtual relation n:con from the aspect to each corresponding nodes, where n represents the distance between two nodes. If one sentence include multi-aspects, build a unique tree for each aspect</li>
+</ol>
+
+<p>Relational Graph Attention Network</p>
+<ol>
+  <li>encode the dependency trees with its labeled edges</li>
+  <li>update each node representation by aggregating neighborhood node representations.</li>
+  <li>extend the original GAT with additional relational heads. We use these heads as gates to control influence fluence from neighborhood nodes. First map the dependency relations to vector.</li>
+</ol>
+
+<p>Model Training</p>
+<ol>
+  <li>BiLSTM encode tree nodes as hi, another BiLSTM encode aspect words as , its average hidden state as the initial representation ha0 of this root.</li>
+</ol>
+
+<p>Baseline Methods</p>
+<ol>
+  <li>Syntax-aware models</li>
+  <li>Attention-based models</li>
+  <li>other recent methods</li>
+</ol>

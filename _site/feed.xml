@@ -1,5 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-17T15:07:30+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
-</subtitle><author><name>Richard Huo</name></author><entry><title type="html">CS224n-Assignment4</title><link href="http://localhost:4000/CS224nA4/" rel="alternate" type="text/html" title="CS224n-Assignment4" /><published>2020-08-16T16:04:11+08:00</published><updated>2020-08-16T16:04:11+08:00</updated><id>http://localhost:4000/CS224nA4</id><content type="html" xml:base="http://localhost:4000/CS224nA4/">&lt;h2 id=&quot;奇怪的问题&quot;&gt;奇怪的问题&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-24T11:54:36+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
+</subtitle><author><name>Richard Huo</name></author><entry><title type="html">Acsa</title><link href="http://localhost:4000/ACSA/" rel="alternate" type="text/html" title="Acsa" /><published>2020-08-21T00:00:00+08:00</published><updated>2020-08-21T00:00:00+08:00</updated><id>http://localhost:4000/ACSA</id><content type="html" xml:base="http://localhost:4000/ACSA/">&lt;ol&gt;
+  &lt;li&gt;Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).&lt;/li&gt;
+  &lt;li&gt;Example:Great food but the service was dreadful.
+So delicious was the noodles but terrible vegetables.&lt;/li&gt;
+  &lt;li&gt;syntax information, task-related syntatic structures is the key.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Aspect-Oriented Dependency Tree&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;For input sentences, apply a dependency parser to obtain its dependency tree, rij is the relation from node i to node j.&lt;/li&gt;
+  &lt;li&gt;place the target aspect at the root&lt;/li&gt;
+  &lt;li&gt;set the nodes with direct connections to the aspect as the children.&lt;/li&gt;
+  &lt;li&gt;other relations are retained, instead introduce a virtual relation n:con from the aspect to each corresponding nodes, where n represents the distance between two nodes. If one sentence include multi-aspects, build a unique tree for each aspect&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Relational Graph Attention Network&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;encode the dependency trees with its labeled edges&lt;/li&gt;
+  &lt;li&gt;update each node representation by aggregating neighborhood node representations.&lt;/li&gt;
+  &lt;li&gt;extend the original GAT with additional relational heads. We use these heads as gates to control influence fluence from neighborhood nodes. First map the dependency relations to vector.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Model Training&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;BiLSTM encode tree nodes as hi, another BiLSTM encode aspect words as , its average hidden state as the initial representation ha0 of this root.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Baseline Methods&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Syntax-aware models&lt;/li&gt;
+  &lt;li&gt;Attention-based models&lt;/li&gt;
+  &lt;li&gt;other recent methods&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><summary type="html">Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral). Example:Great food but the service was dreadful. So delicious was the noodles but terrible vegetables. syntax information, task-related syntatic structures is the key.</summary></entry><entry><title type="html">Lstm</title><link href="http://localhost:4000/LSTM/" rel="alternate" type="text/html" title="Lstm" /><published>2020-08-20T00:00:00+08:00</published><updated>2020-08-20T00:00:00+08:00</updated><id>http://localhost:4000/LSTM</id><content type="html" xml:base="http://localhost:4000/LSTM/"></content><author><name>Richard Huo</name></author><summary type="html"></summary></entry><entry><title type="html">Dataset</title><link href="http://localhost:4000/Dataset/" rel="alternate" type="text/html" title="Dataset" /><published>2020-08-18T16:04:11+08:00</published><updated>2020-08-18T16:04:11+08:00</updated><id>http://localhost:4000/Dataset</id><content type="html" xml:base="http://localhost:4000/Dataset/">&lt;h2 id=&quot;各类数据库分享连接&quot;&gt;各类数据库分享连接&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/s/1NkOp1GEnQ2ZRYDR9Y_rfbw&quot;&gt;glove&lt;/a&gt;，提取码：yd3j&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/s/1q0qGJsIIYS5B8_zwI2z2zg&quot;&gt;nltk&lt;/a&gt;，提取码：82js&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/24709748&quot;&gt;严谨，讲解到位的矩阵求导&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Dataset" /><summary type="html">各类数据库分享连接 glove，提取码：yd3j nltk，提取码：82js 严谨，讲解到位的矩阵求导</summary></entry><entry><title type="html">CS224n-Assignment4</title><link href="http://localhost:4000/CS224nA4/" rel="alternate" type="text/html" title="CS224n-Assignment4" /><published>2020-08-16T16:04:11+08:00</published><updated>2020-08-16T16:04:11+08:00</updated><id>http://localhost:4000/CS224nA4</id><content type="html" xml:base="http://localhost:4000/CS224nA4/">&lt;h2 id=&quot;奇怪的问题&quot;&gt;奇怪的问题&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;python&amp;lt;3.7的话，会遇到一个奇怪的符号导致后面的注释出现问题，把这个-&amp;gt;删了就行，它的功能类似于argparse。&lt;/li&gt;
   &lt;li&gt;LSTM的输入进行了打包处理，操作不当会遇到奇怪的错误，一定要仔细看注释的说明。&lt;/li&gt;
