@@ -8,14 +8,13 @@ tags: [NLP-Basic]
 author: Ricard Huo # Add name author (optional)
 comments: true
 ---
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 ### Component Introduction
 
 #### Input & Output Embedding
 1. wordEmbedding：基于nn.Embedding实现，或者用one-hot vector与权重矩阵W相乘获得。nn.Embedding有两种权重矩阵可以选择。
 - 使用pretrained的embeddings固化，可以用glove或者word2vec模型
 - 初始化W权重矩阵，设置为trainable，在迭代的过程中进行训练
+
 ```python
 class Embeddings(nn.Module):
     def __init__(self, d_model, vocab):
@@ -26,21 +25,24 @@ class Embeddings(nn.Module):
     def forward(self, x):
         return self.lut(x) * math.sqrt(self.d_model) 
 ```
-2. positionalEmbedding：体现词在句子的位置信息。在NMT任务中，之前的encoder模型是基于LSTM的，句子中的词按顺序逐步计算。但是在Transformer中，句子中的词同时处理，无法体现词在句子中的位置。比如：“我爱她”和“她爱我”，截然不同的意思。
+1. positionalEmbedding：体现词在句子的位置信息。在NMT任务中，之前的encoder模型是基于LSTM的，句子中的词按顺序逐步计算。但是在Transformer中，句子中的词同时处理，无法体现词在句子中的位置。比如：“我爱她”和“她爱我”，截然不同的意思。
    positionEmbeding也有两个获得方式。
 - 使用根据公式计算好的的embeddings
 - 初始化W权重矩阵，设置为trainable，在迭代的过程中进行训练
 在后来的实验中，两种方法的效果相似。考虑到第一种方式不需要更新参数，也可以应对训练集中没有出现过的句子长度，故采用第一种方法。
 计算positionEmbedding的公式为：
-$$ PE_{(pos, 2i)}=\sin\left(pos / 10000^{2 i / d_{\text {modd }}}\right)$$
-$$ PE_{(pos, 2i+1)}=\cos\left(pos / 10000^{2 i / d_{\text {modd }}}\right)$$
+
+
+> $ PE_{(pos, 2i)}=\sin\left(pos / 10000^{2 i / d_{\text {modd }}}\right)$
+
+> $ PE_{(pos, 2i+1)}=\cos\left(pos / 10000^{2 i / d_{\text {modd }}}\right)$
+
+
 ```python
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model, dropout, max_len=5000):
         super(PositionalEncoding, self).__init__()
         self.dropout = nn.Dropout(p=dropout)
-
-        # Compute the positional encodings once in log space.
         pe = torch.zeros(max_len, d_model)
         position = torch.arange(0, max_len).unsqueeze(1)
         div_term = torch.exp(torch.arange(0, d_model, 2) *
@@ -94,7 +96,10 @@ class attentionHead(nn.Module):
         return x
 ```
 scaledDotProductAttention如下所示，与之前的dot attention不同的是加了scaled，作者认为，当d_k较大时，softmax后整个matrix的值都会偏小，通过scaled来扩大数值差异：
-$$ \text {Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V$$
+
+> $ \text{Attention}(Q,K,V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right)V$
+
+
 ```python
 class scaledDotProductAttention(nn.Module):
     def __init__(self, dropout=0.1):
@@ -187,6 +192,7 @@ class transformerDecoder(nn.Module):
             x = decoder(x, enc_out, src_mask=src_mask, tgt_mask=tgt_mask)
         return x
 ```
+
 #### teacherForcing
 在训练过程中，如果预测错一个，那么下一个decoderBloack的输出就会受到影响，大概率就会越走越歪。为了解决这一问题，人们提出了teacher forcing这一训练trick。每个decoderblock的输出x，由它前一个词的正确预测给出。
 
