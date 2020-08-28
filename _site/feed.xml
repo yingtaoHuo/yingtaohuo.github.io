@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-26T20:45:37+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-28T10:01:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
 </subtitle><author><name>Richard Huo</name></author><entry><title type="html">Attention is all you need</title><link href="http://localhost:4000/Attention-is-all-you-need/" rel="alternate" type="text/html" title="Attention is all you need" /><published>2020-08-26T15:56:20+08:00</published><updated>2020-08-26T15:56:20+08:00</updated><id>http://localhost:4000/Attention-is-all-you-need</id><content type="html" xml:base="http://localhost:4000/Attention-is-all-you-need/">&lt;h3 id=&quot;component-introduction&quot;&gt;Component Introduction&lt;/h3&gt;
 
 &lt;h4 id=&quot;input--output-embedding&quot;&gt;Input &amp;amp; Output Embedding&lt;/h4&gt;
@@ -344,6 +344,15 @@ Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis te
   &lt;li&gt;numpy,dot,broadcast,multiply区别&lt;/li&gt;
   &lt;li&gt;word2vec训练源码：&lt;a href=&quot;https://github.com/yingtaoHuo/CS224n-assignment/blob/master/a2/word2vec.py&quot;&gt;skip-gram模型&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h3 id=&quot;word2vec优化方法&quot;&gt;word2vec优化方法&lt;/h3&gt;
+&lt;h4 id=&quot;negativesampling&quot;&gt;negativeSampling&lt;/h4&gt;
+&lt;p&gt;以skip-gram为例，优化前，v矩阵即边缘词矩阵每次都要完整的参与运算并完整的更新。negative优化后，会先从v矩阵中提取k个负样本，每个词的提取概率为：
+$ P\left(w_{i}\right)=\frac{f\left(w_{i}\right)^{3 / 4}}{\sum_{j=0}^{n}\left(f\left(w_{j}\right)^{3 / 4}\right)}$
+$ f\left(w_{i}\right)$是该词的词频，频率越高，越容易被选中。3/4是基于经验的超参。
+这样的话，每次更新仅需要更新这k个词，计算量大大减小。&lt;/p&gt;
+
+&lt;h4 id=&quot;hierarchicalsoftmax&quot;&gt;hierarchicalSoftmax&lt;/h4&gt;
 
 &lt;p&gt;参考文献&lt;/p&gt;
 &lt;ol&gt;
