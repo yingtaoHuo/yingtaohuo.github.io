@@ -5,7 +5,7 @@ date:   2018-03-11 13:32:20 +0300
 description: Some feelings after watching the movie Forever Young(无问东西) # Add post description (optional)
 img: post-1.jpg # Add image post (optional)
 tags: [Blog, Forever Young]
-author: Ricard Huo # Add name author (optional)
+author: Richard Huo # Add name author (optional)
 comments: true
 ---
 If you have known what you will face in advance, will you have enough courage to come again?

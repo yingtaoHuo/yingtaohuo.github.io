@@ -5,7 +5,7 @@ date:   2020-08-26 10:56:20 +0300
 description: write some words # Add post description (optional)
 img: post-2.jpg # Add image post (optional)
 tags: [NLP-Basic]
-author: Ricard Huo # Add name author (optional)
+author: Richard Huo # Add name author (optional)
 comments: true
 ---
 ### Component Introduction
