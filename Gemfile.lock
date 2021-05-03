@@ -8,7 +8,9 @@ GEM
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    eventmachine (1.2.7)
     eventmachine (1.2.7-x64-mingw32)
+    ffi (1.15.0)
     ffi (1.15.0-x64-mingw32)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
@@ -36,7 +38,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -66,13 +68,14 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   jekyll (= 3.9.0)
   jekyll-feed (~> 0.13.0)
   jekyll-paginate (~> 1.1.0)
   jekyll-sitemap (~> 1.4.0)
-  kramdown (= 2.3.0)
+  kramdown (= 2.3.1)
   kramdown-parser-gfm
   tzinfo-data
 
