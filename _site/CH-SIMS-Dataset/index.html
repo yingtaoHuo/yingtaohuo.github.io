@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Dataset - My personal blog - Richard Huo</title>
+	<title>CH-SIMS-Dataset - My personal blog - Richard Huo</title>
 	<meta name="description" content="write some words">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -62,33 +62,114 @@
 
   <article class="article-page">
     <div class="page-image">
-      <div class="cover-image" style="background: url(/assets/img/hidden_life.jpg) center no-repeat; background-size: cover;"></div>
+      <div class="cover-image" style="background: url(/assets/img/post-2.jpg) center no-repeat; background-size: cover;"></div>
     </div>
     <div class="wrapper">
       <div class="page-content">
         <div class="header-page">
-          <h1 class="page-title">Dataset</h1>
-          <div class="page-date"><time datetime="2020-08-18 16:04:11 +0800">2020, Aug 18</time></div>
+          <h1 class="page-title">CH-SIMS-Dataset</h1>
+          <div class="page-date"><time datetime="2021-04-29 15:56:20 +0800">2021, Apr 29</time></div>
         </div>
-        <h2 id="各类数据库分享连接">各类数据库分享连接</h2>
+        <h2 id="motivation">Motivation</h2>
 <ol>
-  <li><a href="https://pan.baidu.com/s/1NkOp1GEnQ2ZRYDR9Y_rfbw">glove</a>，提取码：yd3j</li>
-  <li><a href="https://pan.baidu.com/s/1q0qGJsIIYS5B8_zwI2z2zg">nltk</a>，提取码：82js</li>
-  <li><a href="https://zhuanlan.zhihu.com/p/24709748">严谨，讲解到位的矩阵求导</a></li>
+  <li>Unified multimodal annotations can not reflect the independent sentiment of single modalities, and limit the model to capture difference between modalities.</li>
+  <li>Chinese single- and multi-modal sentiment analysis dataset, which contains 2281 refined video segments/clips in wild with both multimodal and independent unimodal annotations.</li>
+  <li>They propose a multi-task learning framework based on late fusion as the baseline.</li>
+  <li>Source code provided by author are available(https://github.com/thuiar/MMSA/)</li>
+</ol>
+
+<h2 id="related-works">Related Works</h2>
+
+<h3 id="multimodal-datasets">Multimodal Datasets</h3>
+<p>IEMOCAP()
+YouTube()
+MOUD()
+ICT-MMMO()
+MOSI()
+CMU-MOSEI()</p>
+
+<h3 id="multimodal-sentiment-analysis">Multimodal Sentiment Analysis</h3>
+<ol>
+  <li>General framework proposed(https://arxiv.org/pdf/1707.09538.pdf) which is composed of representation learning on intra-modality and feature concatenation on inter-modality.</li>
+  <li>(https://arxiv.org/pdf/1806.06176.pdf)Tasi try to factorize representations into two sets of independent factors: multimodal discriminative and modality-specific generative factors.</li>
+</ol>
+
+<h3 id="multi-task-learning">Multi-task Learning</h3>
+<ol>
+  <li>The aim of multi-task learning is to improve the generalization performance of multiple related tasks by utlizing useful information contained in these tasks. The classical framework is that different tasks share the first several layers and then have task-specific parameters in the subsequent layers. In this task, multimodal multi-task learning framework is applied for the verification and feasibility of independent unimodal annotations.</li>
+</ol>
+
+<h4 id="problems">Problems</h4>
+<p>Negative segments are more than positive segments.</p>
+
+<h2 id="extracted-features">Extracted Features</h2>
+<h4 id="text">Text</h4>
+<ol>
+  <li>add two unique tokens to indicate the beginning and the end for each transcript.</li>
+  <li>pre-trained Chinese BERTbase word embeddings are used to obtain word vectors from transcripts. It is worth noting that they do not use word segmentation tools due to the characteristic of BERT.</li>
+</ol>
+
+<h4 id="audio">Audio</h4>
+<ol>
+  <li>use LibROSA speech toolkit with default parameters to extract acoustic features at 22050Hz.</li>
+  <li>Totally, 33-dimensional frame-level acoustic features are extracted, including 1-dimensional logarithmic fundamental frequency (log F0), 20-dimensional Melfrequency cepstral coefficients (MFCCs) and 12-dimensional Constant-Q chromatogram (CQT).These features are related to emotions and tone of speech according to (<a href="https://hcsi.cs.tsinghua.edu.cn/Paper/Paper18/MM-LIRUNNAN.pdf">Li et al., 2018</a>).</li>
+</ol>
+
+<h4 id="vision">Vision</h4>
+<ol>
+  <li>They employ the MTCNN face detection algorithm (<a href="https://arxiv.org/ftp/arxiv/papers/1604/1604.02878.pdf">Zhang et al., 2016a</a>) to extract aligned faces.</li>
+  <li>Then they use MultiComp Openface toolkit to extract the set of 68 facial landmarks, 17 facial action units, head pose, head orientation, and eye gaze. Lastly, 709-dimensional frame-level visual features are extracted in total.</li>
+</ol>
+
+<h4 id="for-intra-modal-representation">For Intra-Modal Representation</h4>
+<ol>
+  <li>For the convenience in text, audio and vision, we assume that:
+\(L^{u}：Sequence Length\)
+\(D_{i}^{u}：Initial Feature\)
+\(D_{r}^{u}：RepresentationFeatures\)
+    <blockquote>
+      <p>where u ∈ {t, a, v}, represent the sequence length,
+initial feature is extracted by section 3.3
+and representation feature learned by unimodal
+feature extractor, respectively. The batch size is B.</p>
+    </blockquote>
+  </li>
+  <li>计算公式
+\(R_{u}=S_{u}\left(I_{u}\right)\)</li>
+  <li>They use a Long Short-Term Memory (LSTM)
+network, a deep neural network with three hidden
+layers of weights Wa and a deep neural network
+with three hidden layers of weights Wv to extract
+textual, acoustic and visual embeddings, respectively.</li>
+</ol>
+
+<h4 id="for-inter-modal-representation">For Inter-Modal Representation</h4>
+<p>They try three fusion methods: LF-DNN, TFN and LMF</p>
+
+<h4 id="multimodal-multitask-learning-framework">Multimodal Multitask Learning Framework</h4>
+<ol>
+  <li>Objective Function
+\(\min \frac{1}{N_{t}} \sum_{n=1}^{N_{t}} \sum_{i} \alpha_{i} L\left(y_{i}^{n}, \hat{y}_{i}^{n}\right)+\sum_{j} \beta_{j}\left\|W_{j}\right\|_{2}^{2}\)
+    <blockquote>
+      <p>Lastly, we use a three-layer DNN to generate
+outputs of different tasks. In this work, we treat
+these tasks as regression models.</p>
+    </blockquote>
+  </li>
 </ol>
 
         <div class="page-footer">
           <div class="page-tag">
             <span>Tags:</span>
             
-            <a href="/tags#NLP-Dataset" class="tag">| NLP-Dataset</a>
+            <a href="/tags#MultiModal" class="tag">| MultiModal</a>
             
           </div><!-- End Tags -->
           <div class="page-share">
             <span>Share:</span>
-            <a href="https://twitter.com/intent/tweet?text=Dataset&url=http://localhost:4000/Dataset/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/Dataset/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="https://plus.google.com/share?url=http://localhost:4000/Dataset/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=CH-SIMS-Dataset&url=http://localhost:4000/CH-SIMS-Dataset/" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/sharer.php?u=http://localhost:4000/CH-SIMS-Dataset/" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/CH-SIMS-Dataset/" title="Share on Google+" rel="nofollow" target="_blank"><i class="fa fa-google" aria-hidden="true"></i></a>
           </div><!-- End Share -->
         </div>
         <section class="author-box">

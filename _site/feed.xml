@@ -1,5 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-08-28T10:01:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
-</subtitle><author><name>Richard Huo</name></author><entry><title type="html">Attention is all you need</title><link href="http://localhost:4000/Attention-is-all-you-need/" rel="alternate" type="text/html" title="Attention is all you need" /><published>2020-08-26T15:56:20+08:00</published><updated>2020-08-26T15:56:20+08:00</updated><id>http://localhost:4000/Attention-is-all-you-need</id><content type="html" xml:base="http://localhost:4000/Attention-is-all-you-need/">&lt;h3 id=&quot;component-introduction&quot;&gt;Component Introduction&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-03T10:48:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My personal blog - Richard Huo</title><subtitle>在这里写一些文字，和大家分享NLP方向的前沿动态。
+</subtitle><author><name>Richard Huo</name></author><entry><title type="html">CH-SIMS-Dataset</title><link href="http://localhost:4000/CH-SIMS-Dataset/" rel="alternate" type="text/html" title="CH-SIMS-Dataset" /><published>2021-04-29T15:56:20+08:00</published><updated>2021-04-29T15:56:20+08:00</updated><id>http://localhost:4000/CH-SIMS-Dataset</id><content type="html" xml:base="http://localhost:4000/CH-SIMS-Dataset/">&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Unified multimodal annotations can not reflect the independent sentiment of single modalities, and limit the model to capture difference between modalities.&lt;/li&gt;
+  &lt;li&gt;Chinese single- and multi-modal sentiment analysis dataset, which contains 2281 refined video segments/clips in wild with both multimodal and independent unimodal annotations.&lt;/li&gt;
+  &lt;li&gt;They propose a multi-task learning framework based on late fusion as the baseline.&lt;/li&gt;
+  &lt;li&gt;Source code provided by author are available(https://github.com/thuiar/MMSA/)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;related-works&quot;&gt;Related Works&lt;/h2&gt;
+
+&lt;h3 id=&quot;multimodal-datasets&quot;&gt;Multimodal Datasets&lt;/h3&gt;
+&lt;p&gt;IEMOCAP()
+YouTube()
+MOUD()
+ICT-MMMO()
+MOSI()
+CMU-MOSEI()&lt;/p&gt;
+
+&lt;h3 id=&quot;multimodal-sentiment-analysis&quot;&gt;Multimodal Sentiment Analysis&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;General framework proposed(https://arxiv.org/pdf/1707.09538.pdf) which is composed of representation learning on intra-modality and feature concatenation on inter-modality.&lt;/li&gt;
+  &lt;li&gt;(https://arxiv.org/pdf/1806.06176.pdf)Tasi try to factorize representations into two sets of independent factors: multimodal discriminative and modality-specific generative factors.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;multi-task-learning&quot;&gt;Multi-task Learning&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;The aim of multi-task learning is to improve the generalization performance of multiple related tasks by utlizing useful information contained in these tasks. The classical framework is that different tasks share the first several layers and then have task-specific parameters in the subsequent layers. In this task, multimodal multi-task learning framework is applied for the verification and feasibility of independent unimodal annotations.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;problems&quot;&gt;Problems&lt;/h4&gt;
+&lt;p&gt;Negative segments are more than positive segments.&lt;/p&gt;
+
+&lt;h2 id=&quot;extracted-features&quot;&gt;Extracted Features&lt;/h2&gt;
+&lt;h4 id=&quot;text&quot;&gt;Text&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;add two unique tokens to indicate the beginning and the end for each transcript.&lt;/li&gt;
+  &lt;li&gt;pre-trained Chinese BERTbase word embeddings are used to obtain word vectors from transcripts. It is worth noting that they do not use word segmentation tools due to the characteristic of BERT.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;audio&quot;&gt;Audio&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;use LibROSA speech toolkit with default parameters to extract acoustic features at 22050Hz.&lt;/li&gt;
+  &lt;li&gt;Totally, 33-dimensional frame-level acoustic features are extracted, including 1-dimensional logarithmic fundamental frequency (log F0), 20-dimensional Melfrequency cepstral coefficients (MFCCs) and 12-dimensional Constant-Q chromatogram (CQT).These features are related to emotions and tone of speech according to (&lt;a href=&quot;https://hcsi.cs.tsinghua.edu.cn/Paper/Paper18/MM-LIRUNNAN.pdf&quot;&gt;Li et al., 2018&lt;/a&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;vision&quot;&gt;Vision&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;They employ the MTCNN face detection algorithm (&lt;a href=&quot;https://arxiv.org/ftp/arxiv/papers/1604/1604.02878.pdf&quot;&gt;Zhang et al., 2016a&lt;/a&gt;) to extract aligned faces.&lt;/li&gt;
+  &lt;li&gt;Then they use MultiComp Openface toolkit to extract the set of 68 facial landmarks, 17 facial action units, head pose, head orientation, and eye gaze. Lastly, 709-dimensional frame-level visual features are extracted in total.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;for-intra-modal-representation&quot;&gt;For Intra-Modal Representation&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;For the convenience in text, audio and vision, we assume that:
+\(L^{u}：Sequence Length\)
+\(D_{i}^{u}：Initial Feature\)
+\(D_{r}^{u}：RepresentationFeatures\)
+    &lt;blockquote&gt;
+      &lt;p&gt;where u ∈ {t, a, v}, represent the sequence length,
+initial feature is extracted by section 3.3
+and representation feature learned by unimodal
+feature extractor, respectively. The batch size is B.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;计算公式
+\(R_{u}=S_{u}\left(I_{u}\right)\)&lt;/li&gt;
+  &lt;li&gt;They use a Long Short-Term Memory (LSTM)
+network, a deep neural network with three hidden
+layers of weights Wa and a deep neural network
+with three hidden layers of weights Wv to extract
+textual, acoustic and visual embeddings, respectively.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;for-inter-modal-representation&quot;&gt;For Inter-Modal Representation&lt;/h4&gt;
+&lt;p&gt;They try three fusion methods: LF-DNN, TFN and LMF&lt;/p&gt;
+
+&lt;h4 id=&quot;multimodal-multitask-learning-framework&quot;&gt;Multimodal Multitask Learning Framework&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;Objective Function
+\(\min \frac{1}{N_{t}} \sum_{n=1}^{N_{t}} \sum_{i} \alpha_{i} L\left(y_{i}^{n}, \hat{y}_{i}^{n}\right)+\sum_{j} \beta_{j}\left\|W_{j}\right\|_{2}^{2}\)
+    &lt;blockquote&gt;
+      &lt;p&gt;Lastly, we use a three-layer DNN to generate
+outputs of different tasks. In this work, we treat
+these tasks as regression models.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="MultiModal" /><summary type="html">Motivation Unified multimodal annotations can not reflect the independent sentiment of single modalities, and limit the model to capture difference between modalities. Chinese single- and multi-modal sentiment analysis dataset, which contains 2281 refined video segments/clips in wild with both multimodal and independent unimodal annotations. They propose a multi-task learning framework based on late fusion as the baseline. Source code provided by author are available(https://github.com/thuiar/MMSA/)</summary></entry><entry><title type="html">Aspect-based Sentiment Analysis</title><link href="http://localhost:4000/ACSA/" rel="alternate" type="text/html" title="Aspect-based Sentiment Analysis" /><published>2020-08-27T18:32:20+08:00</published><updated>2020-08-27T18:32:20+08:00</updated><id>http://localhost:4000/ACSA</id><content type="html" xml:base="http://localhost:4000/ACSA/">&lt;ol&gt;
+  &lt;li&gt;Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).&lt;/li&gt;
+  &lt;li&gt;Example:Great food but the service was dreadful.
+So delicious was the noodles but terrible vegetables.&lt;/li&gt;
+  &lt;li&gt;syntax information, task-related syntatic structures is the key.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Aspect-Oriented Dependency Tree&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;For input sentences, apply a dependency parser to obtain its dependency tree, rij is the relation from node i to node j.&lt;/li&gt;
+  &lt;li&gt;place the target aspect at the root&lt;/li&gt;
+  &lt;li&gt;set the nodes with direct connections to the aspect as the children.&lt;/li&gt;
+  &lt;li&gt;other relations are retained, instead introduce a virtual relation n:con from the aspect to each corresponding nodes, where n represents the distance between two nodes. If one sentence include multi-aspects, build a unique tree for each aspect&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Relational Graph Attention Network&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;encode the dependency trees with its labeled edges&lt;/li&gt;
+  &lt;li&gt;update each node representation by aggregating neighborhood node representations.&lt;/li&gt;
+  &lt;li&gt;extend the original GAT with additional relational heads. We use these heads as gates to control influence fluence from neighborhood nodes. First map the dependency relations to vector.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Model Training&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;BiLSTM encode tree nodes as hi, another BiLSTM encode aspect words as , its average hidden state as the initial representation ha0 of this root.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Baseline Methods&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Syntax-aware models&lt;/li&gt;
+  &lt;li&gt;Attention-based models&lt;/li&gt;
+  &lt;li&gt;other recent methods&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="Blog" /><category term="NLP" /><summary type="html">Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral). Example:Great food but the service was dreadful. So delicious was the noodles but terrible vegetables. syntax information, task-related syntatic structures is the key.</summary></entry><entry><title type="html">Attention is all you need</title><link href="http://localhost:4000/Attention-is-all-you-need/" rel="alternate" type="text/html" title="Attention is all you need" /><published>2020-08-26T15:56:20+08:00</published><updated>2020-08-26T15:56:20+08:00</updated><id>http://localhost:4000/Attention-is-all-you-need</id><content type="html" xml:base="http://localhost:4000/Attention-is-all-you-need/">&lt;h3 id=&quot;component-introduction&quot;&gt;Component Introduction&lt;/h3&gt;
 
 &lt;h4 id=&quot;input--output-embedding&quot;&gt;Input &amp;amp; Output Embedding&lt;/h4&gt;
 &lt;ol&gt;
@@ -193,12 +311,12 @@ multi-head-attention结构如代码所示
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;teacherforcing&quot;&gt;teacherForcing&lt;/h4&gt;
-&lt;p&gt;在训练过程中，如果预测错一个，那么下一个decoderBloack的输出就会受到影响，大概率就会越走越歪。为了解决这一问题，人们提出了teacher forcing这一训练trick。每个decoderblock的输出x，由它前一个词的正确预测给出。&lt;/p&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">Component Introduction</summary></entry><entry><title type="html">Bert</title><link href="http://localhost:4000/Bert/" rel="alternate" type="text/html" title="Bert" /><published>2020-08-26T00:00:00+08:00</published><updated>2020-08-26T00:00:00+08:00</updated><id>http://localhost:4000/Bert</id><content type="html" xml:base="http://localhost:4000/Bert/"></content><author><name>Richard Huo</name></author><summary type="html"></summary></entry><entry><title type="html">八佰观后感</title><link href="http://localhost:4000/TheEightHundred/" rel="alternate" type="text/html" title="八佰观后感" /><published>2020-08-24T15:56:20+08:00</published><updated>2020-08-24T15:56:20+08:00</updated><id>http://localhost:4000/TheEightHundred</id><content type="html" xml:base="http://localhost:4000/TheEightHundred/">&lt;h3 id=&quot;先导&quot;&gt;先导&lt;/h3&gt;
+&lt;p&gt;在训练过程中，如果预测错一个，那么下一个decoderBloack的输出就会受到影响，大概率就会越走越歪。为了解决这一问题，人们提出了teacher forcing这一训练trick。每个decoderblock的输出x，由它前一个词的正确预测给出。&lt;/p&gt;</content><author><name>Richard Huo</name></author><category term="NLP-Basic" /><summary type="html">Component Introduction</summary></entry><entry><title type="html">八佰观后感</title><link href="http://localhost:4000/TheEightHundred/" rel="alternate" type="text/html" title="八佰观后感" /><published>2020-08-24T15:56:20+08:00</published><updated>2020-08-24T15:56:20+08:00</updated><id>http://localhost:4000/TheEightHundred</id><content type="html" xml:base="http://localhost:4000/TheEightHundred/">&lt;h3 id=&quot;先导&quot;&gt;先导&lt;/h3&gt;
 &lt;p&gt;　　“我神州半壁河山，日遭蚕食，亡国灭种之祸，发之他人，操之在我……为国杀敌，是革命军人素志也……”八佰这样的故事本是很容易塑造英雄形象的，孤军奋战至死，这种悲壮的美不多见。奈何史料对这场战争的定性显的它不太行，于是管导演强行架空历史，强化那些感人的素材，弱化部分滑稽之说。但这可以理解，毕竟这是商业片，不是纪录片。奈何管导演非得拿记录史实作为噱头去宣传，这就又当又立了。&lt;/p&gt;
 &lt;h3 id=&quot;第一幕&quot;&gt;第一幕&lt;/h3&gt;
 &lt;p&gt;　　刚到上海的地方宪兵组织遇上了小股日军，手上持枪而一枪未鸣，抱头鼠窜，躲在废墟里似鸵鸟头埋沙。&lt;/p&gt;
 &lt;h3 id=&quot;第二幕&quot;&gt;第二幕&lt;/h3&gt;
-&lt;p&gt;　　散兵游勇们被沿途收拢到四行仓库，有人想走垃圾桥，有人想渡苏州河。他们是父母的儿子，是孩子的父亲，是妻子的老公，战争总是要死人的，也是要有人活着的，为什么活着的不能是我？&lt;/p&gt;
+&lt;p&gt;　　散兵游勇们被沿途收拢到四行仓库，有人想走垃圾桥，有人想渡苏州河。他们是父母的儿子，是孩子的父亲，是妻子的老公，战争总是要死人的，也是要有人活着的，为什么活着的不能是他们，而是晓明叔演的特派员？&lt;/p&gt;
 &lt;h3 id=&quot;第三幕&quot;&gt;第三幕&lt;/h3&gt;
 &lt;p&gt;　　用行刑激发这些新兵蛋子的血性，可能是为了体现战争的的残酷。&lt;/p&gt;
 &lt;h3 id=&quot;第四幕&quot;&gt;第四幕&lt;/h3&gt;
@@ -215,39 +333,7 @@ multi-head-attention结构如代码所示
 &lt;ol&gt;
   &lt;li&gt;“长官，我就是想来看看上海，我以为我们是来打扫战场的。”“长官，团长没了，营长没了，连长也没了，我们不知道去哪儿，就只能往后撤了”，国民党的基层统治力真的是不行啊。像极了印度的样子。&lt;/li&gt;
   &lt;li&gt;四个人面对日军狙击手，强行整修外围工事，老算盘谈到国军老规矩，认命而蹈矩不逾规。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="杂谈" /><summary type="html">先导 　　“我神州半壁河山，日遭蚕食，亡国灭种之祸，发之他人，操之在我……为国杀敌，是革命军人素志也……”八佰这样的故事本是很容易塑造英雄形象的，孤军奋战至死，这种悲壮的美不多见。奈何史料对这场战争的定性显的它不太行，于是管导演强行架空历史，强化那些感人的素材，弱化部分滑稽之说。但这可以理解，毕竟这是商业片，不是纪录片。奈何管导演非得拿记录史实作为噱头去宣传，这就又当又立了。 第一幕 　　刚到上海的地方宪兵组织遇上了小股日军，手上持枪而一枪未鸣，抱头鼠窜，躲在废墟里似鸵鸟头埋沙。 第二幕 　　散兵游勇们被沿途收拢到四行仓库，有人想走垃圾桥，有人想渡苏州河。他们是父母的儿子，是孩子的父亲，是妻子的老公，战争总是要死人的，也是要有人活着的，为什么活着的不能是我？ 第三幕 　　用行刑激发这些新兵蛋子的血性，可能是为了体现战争的的残酷。 第四幕 　　苏州河对岸的部分百姓舍生取义，他们做了什么不重要，重要的是他们选择去做，而不是怯懦到不敢面对，像鸵鸟埋沙那样。民族主义在觉醒，如果说那个时代的中国是一个颓废的，骨瘦如柴的老人，这些觉醒的民众就像是一根根不在麻木的肌肉纤维，他们在等一个大脑，一个能带领他们发出合力的大脑，组织他们完成时代的使命。 第五幕 　　迫于日军即将使用重炮，威胁到列强在租界的利益。美国居中调停，特派员送来一纸总裁口谕，要求撤退，顺带还PUA了一波“你谢晋元的荣誉，比不上四万万人的太平”。“不管打赢了，打输了，总得有人活下去啊，我只想这些百姓少受点战火之灾”，典型的买办思维，汪氏思维，如果真如他们所想，今天的中国怕是要沦为印度支那。至于那句战争总是政治的延伸，私以为通敌卖国，误国辱民不配叫政治，势均力敌的斡旋，不战而屈人之兵才是政治。这类政治家存在的意义在于，为国家利益发声，创造合理的外部环境，最后再由军事家完成最后的任务。（战国时代的秦国就是如此，合纵连横） 第六幕，商业行为，不予置评。 总结 　　这场四行仓库保卫战，是悲壮，是光荣，但更多的是荒诞，是屈辱，是弱国无外交的悲剧。 明知道指挥部已经放弃了这块国土，明知道自己誓死效忠的长官已经放弃了这片战区，明知道困兽犹斗也终归是困兽，他们在这片战场挥洒的热血是为了谁，那个绕着一圈又一圈手榴弹，带着必死的决心跃下五楼的少年又是为了什么。 所以啊，国民党部分基层士兵想必是尝尽了被利用，被抛弃，被遗忘，被出卖的滋味，才造就了后面三大战役的势如破竹。</summary></entry><entry><title type="html">Acsa</title><link href="http://localhost:4000/ACSA/" rel="alternate" type="text/html" title="Acsa" /><published>2020-08-21T00:00:00+08:00</published><updated>2020-08-21T00:00:00+08:00</updated><id>http://localhost:4000/ACSA</id><content type="html" xml:base="http://localhost:4000/ACSA/">&lt;ol&gt;
-  &lt;li&gt;Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral).&lt;/li&gt;
-  &lt;li&gt;Example:Great food but the service was dreadful.
-So delicious was the noodles but terrible vegetables.&lt;/li&gt;
-  &lt;li&gt;syntax information, task-related syntatic structures is the key.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Aspect-Oriented Dependency Tree&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;For input sentences, apply a dependency parser to obtain its dependency tree, rij is the relation from node i to node j.&lt;/li&gt;
-  &lt;li&gt;place the target aspect at the root&lt;/li&gt;
-  &lt;li&gt;set the nodes with direct connections to the aspect as the children.&lt;/li&gt;
-  &lt;li&gt;other relations are retained, instead introduce a virtual relation n:con from the aspect to each corresponding nodes, where n represents the distance between two nodes. If one sentence include multi-aspects, build a unique tree for each aspect&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Relational Graph Attention Network&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;encode the dependency trees with its labeled edges&lt;/li&gt;
-  &lt;li&gt;update each node representation by aggregating neighborhood node representations.&lt;/li&gt;
-  &lt;li&gt;extend the original GAT with additional relational heads. We use these heads as gates to control influence fluence from neighborhood nodes. First map the dependency relations to vector.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Model Training&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;BiLSTM encode tree nodes as hi, another BiLSTM encode aspect words as , its average hidden state as the initial representation ha0 of this root.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Baseline Methods&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Syntax-aware models&lt;/li&gt;
-  &lt;li&gt;Attention-based models&lt;/li&gt;
-  &lt;li&gt;other recent methods&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Richard Huo</name></author><summary type="html">Aspect based Sentiment Analysis:Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral). Example:Great food but the service was dreadful. So delicious was the noodles but terrible vegetables. syntax information, task-related syntatic structures is the key.</summary></entry><entry><title type="html">Dataset</title><link href="http://localhost:4000/Dataset/" rel="alternate" type="text/html" title="Dataset" /><published>2020-08-18T16:04:11+08:00</published><updated>2020-08-18T16:04:11+08:00</updated><id>http://localhost:4000/Dataset</id><content type="html" xml:base="http://localhost:4000/Dataset/">&lt;h2 id=&quot;各类数据库分享连接&quot;&gt;各类数据库分享连接&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="杂谈" /><summary type="html">先导 　　“我神州半壁河山，日遭蚕食，亡国灭种之祸，发之他人，操之在我……为国杀敌，是革命军人素志也……”八佰这样的故事本是很容易塑造英雄形象的，孤军奋战至死，这种悲壮的美不多见。奈何史料对这场战争的定性显的它不太行，于是管导演强行架空历史，强化那些感人的素材，弱化部分滑稽之说。但这可以理解，毕竟这是商业片，不是纪录片。奈何管导演非得拿记录史实作为噱头去宣传，这就又当又立了。 第一幕 　　刚到上海的地方宪兵组织遇上了小股日军，手上持枪而一枪未鸣，抱头鼠窜，躲在废墟里似鸵鸟头埋沙。 第二幕 　　散兵游勇们被沿途收拢到四行仓库，有人想走垃圾桥，有人想渡苏州河。他们是父母的儿子，是孩子的父亲，是妻子的老公，战争总是要死人的，也是要有人活着的，为什么活着的不能是他们，而是晓明叔演的特派员？ 第三幕 　　用行刑激发这些新兵蛋子的血性，可能是为了体现战争的的残酷。 第四幕 　　苏州河对岸的部分百姓舍生取义，他们做了什么不重要，重要的是他们选择去做，而不是怯懦到不敢面对，像鸵鸟埋沙那样。民族主义在觉醒，如果说那个时代的中国是一个颓废的，骨瘦如柴的老人，这些觉醒的民众就像是一根根不在麻木的肌肉纤维，他们在等一个大脑，一个能带领他们发出合力的大脑，组织他们完成时代的使命。 第五幕 　　迫于日军即将使用重炮，威胁到列强在租界的利益。美国居中调停，特派员送来一纸总裁口谕，要求撤退，顺带还PUA了一波“你谢晋元的荣誉，比不上四万万人的太平”。“不管打赢了，打输了，总得有人活下去啊，我只想这些百姓少受点战火之灾”，典型的买办思维，汪氏思维，如果真如他们所想，今天的中国怕是要沦为印度支那。至于那句战争总是政治的延伸，私以为通敌卖国，误国辱民不配叫政治，势均力敌的斡旋，不战而屈人之兵才是政治。这类政治家存在的意义在于，为国家利益发声，创造合理的外部环境，最后再由军事家完成最后的任务。（战国时代的秦国就是如此，合纵连横） 第六幕，商业行为，不予置评。 总结 　　这场四行仓库保卫战，是悲壮，是光荣，但更多的是荒诞，是屈辱，是弱国无外交的悲剧。 明知道指挥部已经放弃了这块国土，明知道自己誓死效忠的长官已经放弃了这片战区，明知道困兽犹斗也终归是困兽，他们在这片战场挥洒的热血是为了谁，那个绕着一圈又一圈手榴弹，带着必死的决心跃下五楼的少年又是为了什么。 所以啊，国民党部分基层士兵想必是尝尽了被利用，被抛弃，被遗忘，被出卖的滋味，才造就了后面三大战役的势如破竹。</summary></entry><entry><title type="html">Dataset</title><link href="http://localhost:4000/Dataset/" rel="alternate" type="text/html" title="Dataset" /><published>2020-08-18T16:04:11+08:00</published><updated>2020-08-18T16:04:11+08:00</updated><id>http://localhost:4000/Dataset</id><content type="html" xml:base="http://localhost:4000/Dataset/">&lt;h2 id=&quot;各类数据库分享连接&quot;&gt;各类数据库分享连接&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/s/1NkOp1GEnQ2ZRYDR9Y_rfbw&quot;&gt;glove&lt;/a&gt;，提取码：yd3j&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/s/1q0qGJsIIYS5B8_zwI2z2zg&quot;&gt;nltk&lt;/a&gt;，提取码：82js&lt;/li&gt;
@@ -288,7 +374,7 @@ So delicious was the noodles but terrible vegetables.&lt;/li&gt;
     &lt;h3 id=&quot;使用过程&quot;&gt;使用过程&lt;/h3&gt;
     &lt;p&gt;&lt;a href=&quot;http://web.stanford.edu/class/cs224n/assignments/a4.pdf&quot;&gt;2.b&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">奇怪的问题 python&amp;lt;3.7的话，会遇到一个奇怪的符号导致后面的注释出现问题，把这个-&amp;gt;删了就行，它的功能类似于argparse。 LSTM的输入进行了打包处理，操作不当会遇到奇怪的错误，一定要仔细看注释的说明。 decode层在init()中的定义位置不当，会导致sanity测试出错python sanity_check.py 1f，虽然forward层是一样的。 如果想download代码进行测试，记得下载nltk数据库，这边需要一些微操把数据放在该放的地方。</summary></entry><entry><title type="html">CS224n-Assignment3</title><link href="http://localhost:4000/CS224nA3/" rel="alternate" type="text/html" title="CS224n-Assignment3" /><published>2020-08-13T02:14:20+08:00</published><updated>2020-08-13T02:14:20+08:00</updated><id>http://localhost:4000/CS224nA3</id><content type="html" xml:base="http://localhost:4000/CS224nA3/">&lt;h1 id=&quot;assignment3-write-answer&quot;&gt;assignment3 write Answer&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="NLP-Basic" /><summary type="html">奇怪的问题 python&amp;lt;3.7的话，会遇到一个奇怪的符号导致后面的注释出现问题，把这个-&amp;gt;删了就行，它的功能类似于argparse。 LSTM的输入进行了打包处理，操作不当会遇到奇怪的错误，一定要仔细看注释的说明。 decode层在init()中的定义位置不当，会导致sanity测试出错python sanity_check.py 1f，虽然forward层是一样的。 如果想download代码进行测试，记得下载nltk数据库，这边需要一些微操把数据放在该放的地方。</summary></entry><entry><title type="html">CS224n-Assignment3</title><link href="http://localhost:4000/CS224nA3/" rel="alternate" type="text/html" title="CS224n-Assignment3" /><published>2020-08-13T02:14:20+08:00</published><updated>2020-08-13T02:14:20+08:00</updated><id>http://localhost:4000/CS224nA3</id><content type="html" xml:base="http://localhost:4000/CS224nA3/">&lt;h1 id=&quot;assignment3-write-answer&quot;&gt;assignment3 write Answer&lt;/h1&gt;
 &lt;h2 id=&quot;machine-learning--neural-networks&quot;&gt;Machine Learning &amp;amp; Neural Networks&lt;/h2&gt;
 &lt;h3 id=&quot;a-adam-optimizer&quot;&gt;(a) Adam Optimizer&lt;/h3&gt;
 &lt;ol&gt;
@@ -311,7 +397,7 @@ So delicious was the noodles but terrible vegetables.&lt;/li&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://andyljones.tumblr.com/post/110998971763/an-explanation-of-xavier-initialization&quot;&gt;参数初始化&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;https://spellonyou.github.io/2020/06/cs224n-19w-a3/&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">assignment3 write Answer Machine Learning &amp;amp; Neural Networks (a) Adam Optimizer b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。 这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。 (b) Regularization technique-Dropout 1式带入2式 训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。</summary></entry><entry><title type="html">NLP_2020 Sentiment Analysis</title><link href="http://localhost:4000/PapaerReading/" rel="alternate" type="text/html" title="NLP_2020 Sentiment Analysis" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/PapaerReading</id><content type="html" xml:base="http://localhost:4000/PapaerReading/">&lt;ol&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="NLP-Basic" /><summary type="html">assignment3 write Answer Machine Learning &amp;amp; Neural Networks (a) Adam Optimizer b=0.9决定了，每次参数更新更大的取决于历史遗留梯度，而非本轮计算出的梯度，所以假设这次梯度varing了，乘一个0.1也不会掀起什么大风大浪。m的出现会使每次更新迭代的步长更加稳定，不会忽小忽大，提高了收敛效率。 这个没理解，数学直觉告诉我，第一个式子已经起到了这个式子的作用。后面有机会结和实际项目，再来填坑。 (b) Regularization technique-Dropout 1式带入2式 训练期间，dropout可以提高模型的泛化能力。但是在测试期间，dropout会提高模型的不确定性，导致测试结果无法体现模型的performance。</summary></entry><entry><title type="html">NLP_2020 Sentiment Analysis</title><link href="http://localhost:4000/PapaerReading/" rel="alternate" type="text/html" title="NLP_2020 Sentiment Analysis" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/PapaerReading</id><content type="html" xml:base="http://localhost:4000/PapaerReading/">&lt;ol&gt;
   &lt;li&gt;本文分析各个文本预处理过程在情感分析任务中的作用。 *
 &lt;em&gt;A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks&lt;/em&gt;&lt;/li&gt;
   &lt;li&gt;本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。*
@@ -335,7 +421,7 @@ Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis te
 &lt;em&gt;SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics&lt;/em&gt;&lt;/li&gt;
   &lt;li&gt;本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 *
 &lt;em&gt;KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Sentiment" /><summary type="html">本文分析各个文本预处理过程在情感分析任务中的作用。 * A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks 本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。* CH-SIMS: A Chinese Multimodal Sentiment Analysis Dataset with Fine-grained Annotations of Modality 本文提出一种新颖的预处理办法：Sentiment Knowledge Enhanced Pre-training，为了解决目前sentiment words和aspect-sentiment pairs在预处理中被忽视的问题。* SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis 本文提出cross domain的模型，主要为了解决labeled数据不足的问题。* Adversarial and Domain-Aware BERT for Cross-Domain Sentiment Analysis 本文提出了一套无监督，跨语种，情感分类模型，命名为multi-view encoder-classifier(MVEC)，解决部分语种缺少标注数据和大型语料库的问题。 Cross-Lingual Unsupervised Sentiment Classification with Multi-View Transfer Learning 关于Aspect sentiment analysis问题，本文提出了过去的研究者们专注于sentence-level sentiment analysis，忽略了document-level的信息，并举出明显案例佐证观点。以下是对于Aspect sentiment analysis的解释。* Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral). Aspect Sentiment Classification with Document-level Sentiment Preference Modeling 本文提出此前的aspect情感研究存在一个问题：人们通过attention机制，强调opinion word与aspect的关系，但是因为语言间复杂的关系，模型往往会confuse这些关系。本文提出通过构建有效的语法树来解决这一问题。* Relational Graph Attention Network for Aspect-based Sentiment Analysis 本文认为情感分析，情绪分析的结果对于嘲讽检测有正面意义，提出一个多任务框架，使用环境为多模态的场景。这个研究证明，情感检测得到的结果可以提高嘲讽检测模型的效果。 Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, Sentiment and Emotion Analysis 本文首先将ABSA问题，拆解为三个子问题的集合，提出三个子问题间的交互关系尚未被挖掘这一事实，于是提出想通过构建aspect与opinion的关系对三个子问题的协作信号进行编码（这句话过于拗口，简单点就是，加了点先验知识，比如‘美味’一般情况下不会对应‘地板’，大概率会对应‘食物’类别下的名词）。* Relation-Aware Collaborative Learning for Unified Aspect-Based Sentiment Analysis 本文尝试拓展bert模型的使用方法，提高类bert模型在SST数据集上，phrase-level sentiment analysis的成绩。通过构建一棵二元树，总结一段phrase的上下文信息，实验证明在phrase-level sentiment classification获得较好效果。后面还有实验可以证明该模型的迁移效果较好。最后设计了可视化方法去展示这一模型的优势。 * SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics 本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 * KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis</summary></entry><entry><title type="html">CS224n-Assignment2</title><link href="http://localhost:4000/CS224nA2/" rel="alternate" type="text/html" title="CS224n-Assignment2" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/CS224nA2</id><content type="html" xml:base="http://localhost:4000/CS224nA2/">&lt;ol&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="NLP-Sentiment" /><summary type="html">本文分析各个文本预处理过程在情感分析任务中的作用。 * A Comprehensive Analysis of Preprocessing for Word Representation Learning in Affective Tasks 本文贡献了一个中文多模态数据集，创新点在于数据标注的方式（one mutlimodal annotation and three unimodal annotations for each video clip）。并且进行了一系列的实验，发布了该数据集的baseline。* CH-SIMS: A Chinese Multimodal Sentiment Analysis Dataset with Fine-grained Annotations of Modality 本文提出一种新颖的预处理办法：Sentiment Knowledge Enhanced Pre-training，为了解决目前sentiment words和aspect-sentiment pairs在预处理中被忽视的问题。* SKEP: Sentiment Knowledge Enhanced Pre-training for Sentiment Analysis 本文提出cross domain的模型，主要为了解决labeled数据不足的问题。* Adversarial and Domain-Aware BERT for Cross-Domain Sentiment Analysis 本文提出了一套无监督，跨语种，情感分类模型，命名为multi-view encoder-classifier(MVEC)，解决部分语种缺少标注数据和大型语料库的问题。 Cross-Lingual Unsupervised Sentiment Classification with Multi-View Transfer Learning 关于Aspect sentiment analysis问题，本文提出了过去的研究者们专注于sentence-level sentiment analysis，忽略了document-level的信息，并举出明显案例佐证观点。以下是对于Aspect sentiment analysis的解释。* Aspect sentiment analysis: Aspect-based sentiment analysis is a text analysis technique that breaks down text into aspects (attributes or components of a product or service), and then allocates each one a sentiment level (positive, negative or neutral). Aspect Sentiment Classification with Document-level Sentiment Preference Modeling 本文提出此前的aspect情感研究存在一个问题：人们通过attention机制，强调opinion word与aspect的关系，但是因为语言间复杂的关系，模型往往会confuse这些关系。本文提出通过构建有效的语法树来解决这一问题。* Relational Graph Attention Network for Aspect-based Sentiment Analysis 本文认为情感分析，情绪分析的结果对于嘲讽检测有正面意义，提出一个多任务框架，使用环境为多模态的场景。这个研究证明，情感检测得到的结果可以提高嘲讽检测模型的效果。 Sentiment and Emotion help Sarcasm? A Multi-task Learning Framework for Multi-Modal Sarcasm, Sentiment and Emotion Analysis 本文首先将ABSA问题，拆解为三个子问题的集合，提出三个子问题间的交互关系尚未被挖掘这一事实，于是提出想通过构建aspect与opinion的关系对三个子问题的协作信号进行编码（这句话过于拗口，简单点就是，加了点先验知识，比如‘美味’一般情况下不会对应‘地板’，大概率会对应‘食物’类别下的名词）。* Relation-Aware Collaborative Learning for Unified Aspect-Based Sentiment Analysis 本文尝试拓展bert模型的使用方法，提高类bert模型在SST数据集上，phrase-level sentiment analysis的成绩。通过构建一棵二元树，总结一段phrase的上下文信息，实验证明在phrase-level sentiment classification获得较好效果。后面还有实验可以证明该模型的迁移效果较好。最后设计了可视化方法去展示这一模型的优势。 * SentiBERT: A Transferable Transformer-Based Architecture for Compositional Sentiment Semantics 本文尝试提高domain adversial模型，在cross domain（combat domain gap between different applications）问题上的表现，通过使用图卷积自动编码器获得domain域的信息来达到目的。 * KinGDOM: Knowledge-Guided DOMain adaptation for sentiment analysis</summary></entry><entry><title type="html">CS224n-Assignment2</title><link href="http://localhost:4000/CS224nA2/" rel="alternate" type="text/html" title="CS224n-Assignment2" /><published>2020-08-08T03:42:20+08:00</published><updated>2020-08-08T03:42:20+08:00</updated><id>http://localhost:4000/CS224nA2</id><content type="html" xml:base="http://localhost:4000/CS224nA2/">&lt;ol&gt;
   &lt;li&gt;本来最近在完成cs224n的课程，就记录一下自己在完成过程中较易堵住的地方吧。&lt;/li&gt;
   &lt;li&gt;加载glovce预训练模型，因为在墙内，所以比较麻烦，先从我提供的百度云盘中下载glove.6B.zip，解压到同一目录下，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gensim.scripts.glove2word2vec()&lt;/code&gt;将其转为word2vec格式的模型，再由&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;load_word2vec_format()&lt;/code&gt;函数进行读取。&lt;/li&gt;
   &lt;li&gt;思考glove模型的bias问题，bias怎么来的，如何解决&lt;/li&gt;
@@ -353,6 +439,7 @@ $ f\left(w_{i}\right)$是该词的词频，频率越高，越容易被选中。3
 这样的话，每次更新仅需要更新这k个词，计算量大大减小。&lt;/p&gt;
 
 &lt;h4 id=&quot;hierarchicalsoftmax&quot;&gt;hierarchicalSoftmax&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/pinard/p/7243513.html&quot;&gt;这篇文章写得很好，我就不重复造轮子了。&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;参考文献&lt;/p&gt;
 &lt;ol&gt;
@@ -360,7 +447,8 @@ $ f\left(w_{i}\right)$是该词的词频，频率越高，越容易被选中。3
   &lt;li&gt;http://web.stanford.edu/class/cs224n/&lt;/li&gt;
   &lt;li&gt;http://moverzp.com/2019/05/19/CS-224n-2019-Assignment-2-word2vec-Coding-%E2%80%94%E2%80%94Part-1/&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.runoob.com/numpy/numpy-broadcast.html&quot;&gt;numpy广播机制&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Ricard Huo</name></author><category term="NLP-Basic" /><summary type="html">本来最近在完成cs224n的课程，就记录一下自己在完成过程中较易堵住的地方吧。 加载glovce预训练模型，因为在墙内，所以比较麻烦，先从我提供的百度云盘中下载glove.6B.zip，解压到同一目录下，gensim.scripts.glove2word2vec()将其转为word2vec格式的模型，再由load_word2vec_format()函数进行读取。 思考glove模型的bias问题，bias怎么来的，如何解决 word2vec的训练迭代过程 type创建类与class的区别，isinstance() numpy,dot,broadcast,multiply区别 word2vec训练源码：skip-gram模型</summary></entry><entry><title type="html">ForeverYoung</title><link href="http://localhost:4000/Forever-Young/" rel="alternate" type="text/html" title="ForeverYoung" /><published>2018-03-11T18:32:20+08:00</published><updated>2018-03-11T18:32:20+08:00</updated><id>http://localhost:4000/Forever-Young</id><content type="html" xml:base="http://localhost:4000/Forever-Young/">&lt;p&gt;If you have known what you will face in advance, will you have enough courage to come again?
+  &lt;li&gt;&lt;a href=&quot;https://github.com/tmikolov/word2vec/blob/master/word2vec.c&quot;&gt;word2vec源码&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Richard Huo</name></author><category term="NLP-Basic" /><summary type="html">本来最近在完成cs224n的课程，就记录一下自己在完成过程中较易堵住的地方吧。 加载glovce预训练模型，因为在墙内，所以比较麻烦，先从我提供的百度云盘中下载glove.6B.zip，解压到同一目录下，gensim.scripts.glove2word2vec()将其转为word2vec格式的模型，再由load_word2vec_format()函数进行读取。 思考glove模型的bias问题，bias怎么来的，如何解决 word2vec的训练迭代过程 type创建类与class的区别，isinstance() numpy,dot,broadcast,multiply区别 word2vec训练源码：skip-gram模型</summary></entry><entry><title type="html">ForeverYoung</title><link href="http://localhost:4000/Forever-Young/" rel="alternate" type="text/html" title="ForeverYoung" /><published>2018-03-11T18:32:20+08:00</published><updated>2018-03-11T18:32:20+08:00</updated><id>http://localhost:4000/Forever-Young</id><content type="html" xml:base="http://localhost:4000/Forever-Young/">&lt;p&gt;If you have known what you will face in advance, will you have enough courage to come again?
 From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -368,4 +456,4 @@ From World War, to revolution and ultimately rebirth, Forever Young is the story
 &lt;/font&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/film-foreveryoung-1.jpg&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;</content><author><name>Ricard Huo</name></author><category term="Blog" /><category term="Forever Young" /><summary type="html">If you have known what you will face in advance, will you have enough courage to come again? From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/assets/img/film-foreveryoung-1.jpg&quot; alt=&quot;Yosh Ginsu&quot; /&gt;&lt;/p&gt;</content><author><name>Richard Huo</name></author><category term="Blog" /><category term="Forever Young" /><summary type="html">If you have known what you will face in advance, will you have enough courage to come again? From World War, to revolution and ultimately rebirth, Forever Young is the story of four generations spanning a hundred years of modern Chinese history. Each generation faces its own unique set of challenges. Up against corporate corruption, the trials and tribulations of the cultural revolution, and one’s duty to nation in time of war, they are faced with choosing their individual paths through history. But as the challenges and turmoil of each generation may differ as time changes, what was learned in the past cannot help but effect the choices that are made in the future as it is passed down from generation to generation. And that is the universal message that being true to yourself is precious. It is the source of strength that empowers one to become the person they want to be, to march forward as far as their hearts desire, into the future.</summary></entry></feed>
